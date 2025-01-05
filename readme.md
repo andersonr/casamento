@@ -14,3 +14,6 @@ Como deployar:
 - Rodar o build do projeto com o comando "npm run build"
 - Copiar o conteudo da pasta "dist" para a pasta "docs"
 - Atualizar o repositório no github
+
+Lista de inspirações
+https://withjoy.com/anderson-and-bruna/welcome
