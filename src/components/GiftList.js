@@ -7,6 +7,9 @@ export function createGiftList() {
 				"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/terapia_jabul0.webp",
 			description: "Terapia para a noiva após os preparativos do casamento",
 			value: 150,
+			pixSrc: "./images/150.svg",
+			pixCode:
+				"aaaado00020126510014BR.GOV.BCB.PIX0129anderson.rissardi94@gmail.com5204000053039865406150.005802BR5917Anderson Rissardi6009SAO PAULO610805409000622405207x6YVQBRBJ45U9Mmwdwh6304A556",
 		},
 		{
 			imgSrc:
@@ -214,8 +217,14 @@ export function createGiftList() {
     <main class="p-8 bg-soft-cream">
       <div class="grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 1200px; margin: 0 auto;">
         ${gifts
-					.map((gift) =>
-						createGiftItem(gift.imgSrc, gift.description, gift.value),
+					.map((gift, index) =>
+						createGiftItem(
+							gift.imgSrc,
+							gift.description,
+							gift.value,
+							index,
+							gift.pixCode,
+						),
 					)
 					.join("")}
       </div>

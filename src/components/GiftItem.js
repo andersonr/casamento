@@ -1,4 +1,4 @@
-export function createGiftItem(imgSrc, description, value) {
+export function createGiftItem(imgSrc, description, value, index, pixCode) {
 	return `
      <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full">
       <img src="${imgSrc}" alt="${description}" class="w-full h-48 object-cover">
@@ -8,9 +8,45 @@ export function createGiftItem(imgSrc, description, value) {
           <p class="text-gray-1000"><b>R$ ${
 						value ? value.toFixed(2).toString().replace(".", ",") : "1,00"
 					}</b></p>
-          <button class="mt-2 bg-blue-500 text-white py-2 px-4 rounded w-full">Comprar</button>
+          <div id="image-container_${index}" class="mt-2 flex flex-col items-center">
+          </div>          
+          <button id="btn_${index}" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded w-full" onclick="showImage(${index})" >❤️ Presentear</button>
+          <input type="text" class="text-gray-700 flex-grow readonly hidden" id="txt_${index}" value="${
+						pixCode ? pixCode : ""
+					}" />          
         </div>
       </div>
     </div>
   `;
+}
+
+window.showImage = (index) => {
+	const imageContainer = document.getElementById(`image-container_${index}`);
+	if (!imageContainer.querySelector("img")) {
+		const img = document.createElement("img");
+		img.src = "./images/150.svg";
+		img.alt = "Imagem de presente";
+		img.className = "object-cover mt-2";
+		imageContainer.appendChild(img);
+
+		const copyButton = document.createElement("button");
+		copyButton.id = `btn_pix_${index}`;
+		copyButton.textContent = "Copiar pix";
+		copyButton.className = "bg-green-500 text-white py-2 px-4 rounded w-full";
+		copyButton.onclick = () => copyToClipboard(index);
+		imageContainer.appendChild(copyButton);
+	}
+};
+
+function copyToClipboard(index) {
+	const textToCopy = document.getElementById(`txt_${index}`).value;
+	navigator.clipboard
+		.writeText(textToCopy)
+		.then(() => {
+			document.getElementById(`btn_pix_${index}`).textContent = "Pix copiado!";
+			//alert("Texto copiado para o clipboard!");
+		})
+		.catch((err) => {
+			console.error("Erro ao copiar texto: ", err);
+		});
 }
