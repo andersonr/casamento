@@ -4,6 +4,7 @@ import { createHeader } from "./components/Header.js";
 import { createImageSection } from "./components/ImageSection.js";
 import { createLayout } from "./components/Layout.js";
 import { createSaveTheDate } from "./components/SaveTheDate.js";
+import { createHero } from "./components/Hero.js"; // Importando o Hero
 import "./style.css";
 
 const path = window.location.pathname;
@@ -19,7 +20,8 @@ if (path.includes("lista-presentes.html")) {
     ${createGiftList()}
   `;
 } else {
-	content = `     
+	content = `
+    ${createHero()} 
     ${createImageSection()}
     ${createSaveTheDate()}
     ${createGallery()}    
