@@ -19,6 +19,7 @@ export function createHero() {
             <div class="text-xl text-primary font-medium">
               Cerimônia e celebração do nosso casamento<br>
               <span class="font-dancing text-2xl mt-2 block">Locomotiva eventos - Gaspar</span>
+              <a href="https://www.google.com/maps/place/Locomotiva+Eventos/@-26.8898304,-49.0027926,17z/data=!3m1!4b1!4m6!3m5!1s0x94df23a9fced8b2f:0x746e1b6bd669c6c4!8m2!3d-26.8898304!4d-49.0027926!16s%2Fg%2F11b6hs9xwm?entry=ttu&g_ep=EgoyMDI1MDMxOS4yIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" target="_blank" class="text-sm mt-2 block hover:underline text-primary">R. Vidal Flávio Dias, 1122 - Belchior Baixo, Gaspar - SC, 89114-442</a>
             </div>
           </div>
         </div>
