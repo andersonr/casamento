@@ -1,16 +1,16 @@
 export function createGiftItem(imgSrc, description, value, index, pixCode) {
 	return `
-     <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-full">
+     <div class="bg-white shadow-md rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 border-2 border-rosa-claro flex flex-col h-full">
       <img src="${imgSrc}" alt="${description}" class="w-full h-48 object-cover">
       <div class="p-4 flex flex-col flex-grow">
-        <p class="text-gray-700 flex-grow">${description}</p>
+        <p class="text-gray-700 text-rosa-claro flex-grow">${description}</p>
         <div class="mt-auto">
-          <p class="text-gray-1000"><b>R$ ${
+          <p class="text-rosa-claro"><b>R$ ${
 						value ? value.toFixed(2).toString().replace(".", ",") : "1,00"
 					}</b></p>
           <div id="image-container_${index}" class="mt-2 flex flex-col items-center">
           </div>          
-          <button id="btn_${index}" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded w-full" onclick="showImage(${index})" >❤️ Presentear</button>
+          <button id="btn_${index}" class="mt-2 bg-primary text-white py-2 px-4 rounded w-full" onclick="showImage(${index})" >❤️ Presentear</button>
           <input type="text" class="text-gray-700 flex-grow readonly hidden" id="txt_${index}" value="${
 						pixCode ? pixCode : ""
 					}" />          

@@ -1,5 +1,6 @@
 import { createGiftItem } from "./GiftItem.js";
 
+
 export function createGiftList() {
 	const gifts = [
 		{
@@ -214,7 +215,8 @@ export function createGiftList() {
 	];
 
 	return `
-    <main class="p-8 bg-soft-cream">
+	
+    <main class="p-8 bg-amarelo-queimado text-primary">
       <div class="grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 1200px; margin: 0 auto;">
         ${gifts
 					.map((gift, index) =>

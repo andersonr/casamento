@@ -1,3 +1,4 @@
+// Add an ID to your Gallery section
 export function createGallery() {
   // Array of Cloudinary image URLs (replace with your actual image URLs)
   const images = [
@@ -22,8 +23,8 @@ export function createGallery() {
   `).join('');
 
   return `
-    <section class="section py-8">
-      <h2 class="text-3xl md:text-4xl font-dancing text-center mb-12">Momentos Especiais</h2>
+    <section id="gallery-section" class="section py-8 bg-terracota">
+      <h2 class="text-3xl md:text-4xl font-dancing text-amarelo-queimado text-center mb-12">Momentos Especiais</h2>
       <div class="max-w-6xl mx-auto px-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
           ${galleryHTML}
