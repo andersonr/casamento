@@ -32,7 +32,8 @@ export function createCartDrawer() {
         </div>
         
         <div id="payment-info" class="hidden flex flex-col items-center mb-4">
-          
+          <img id="qrcode-image" src="" alt="QR Code Pix" class="w-32 h-32 object-contain mb-3">
+          <p class="text-sm text-gray-600 mb-3">chave: anderson.rissardi94@gmail.com</p>
           <button id="copy-pix-button" onclick="copyCartPixCode()" class="bg-green-500 text-white py-2 px-4 rounded w-full mb-2">
             Copiar pix
           </button>
@@ -48,10 +49,6 @@ export function createCartDrawer() {
   `;
 }
 
-// Todo: Fix geração de QRCode
-// Inserir a linha de baixo, abixo da linha
-// <img id="qrcode-image" src="./images/150.svg" alt="QR Code Pix" class="w-48 h-48 object-contain mb-3">
-//
 
 // Add these functions to your GiftItem.js file or create a new cart.js file
 window.handleCheckout = () => {
@@ -75,10 +72,8 @@ window.handleCheckout = () => {
     // Update pix code input
     document.getElementById('pix-code-input').value = pixCode;
     
-    // Update QR code image - you might want to generate this dynamically based on the value
-    // For now we're using a static image
-    // Todo: Fix geração de QRCode
-    // document.getElementById('qrcode-image').src = "./images/150.svg";
+    // Generate QR code dynamically
+    generateQRCode(pixCode);
     
   } else {
     // Finalize purchase
@@ -114,6 +109,9 @@ window.copyCartPixCode = () => {
   // Update the input value with the latest pix code
   pixCodeInput.value = pixCode;
   
+  // Regenerate QR code with the latest pix code
+  generateQRCode(pixCode);
+  
   navigator.clipboard.writeText(pixCodeInput.value)
     .then(() => {
       // Show success message
@@ -131,6 +129,19 @@ window.copyCartPixCode = () => {
       showNotification('Erro ao copiar o código Pix');
     });
 };
+
+// Function to generate QR code
+function generateQRCode(data) {
+  // QR Code Generator API
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(data)}`;
+  
+  // Update the QR code image source
+  const qrCodeImage = document.getElementById('qrcode-image');
+  if (qrCodeImage) {
+    qrCodeImage.src = qrCodeUrl;
+    qrCodeImage.alt = 'QR Code Pix';
+  }
+}
 
 // Helper function to generate a pix code based on total value
 function generatePixCode(totalValue) {
