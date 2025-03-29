@@ -2,6 +2,7 @@
 import { createGiftList } from "./components/GiftList.js";
 import { createHeader } from "./components/Header.js";
 import { createLayout } from "./components/Layout.js";
+import { createCartDrawer } from "./components/CartDrawer.js";
 
 import { createHero } from "./components/Hero.js"; 
 import { createHead } from "./components/Head.js";
@@ -28,22 +29,44 @@ const headerPawTrail = `
   </div>
 `;
 
-content = `
-  ${createHead()}
-  ${createHero()}
-  ${createAgendaSection()}
-  ${createCuriosidadesSection()}
-  ${createAlbumSection()}
-  ${createDoacaoSection()}
-  ${headerPawTrail}      
-  ${createHeader(
-    "Lista de Presentes",
-    "Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)",
-  )}  
-  ${createGiftList()}
-`;
+// Check if we're on the gift list page
+const isGiftListPage = path.includes('lista-presentes.html');
+
+if (isGiftListPage) {
+  content = `
+    ${createHeader(
+      "Lista de Presentes",
+      "Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)",
+    )}  
+    ${createGiftList()}
+    ${createCartDrawer()}
+  `;
+} else {
+  content = `
+    ${createHead()}
+    ${createHero()}
+    ${createAgendaSection()}
+    ${createCuriosidadesSection()}
+    ${createAlbumSection()}
+    ${createDoacaoSection()}
+    ${headerPawTrail}      
+    ${createHeader(
+      "Lista de Presentes",
+      "Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)",
+    )}  
+    ${createGiftList()}
+    ${createCartDrawer()}
+  `;
+}
 
 document.querySelector("#app").innerHTML = createLayout(content);
 
 // Initialize scroll animations when DOM is loaded
-document.addEventListener('DOMContentLoaded', initScrollAnimations);
+document.addEventListener('DOMContentLoaded', () => {
+  initScrollAnimations();
+  
+  // Initialize cart counter
+  if (window.updateCartCounter) {
+    window.updateCartCounter();
+  }
+});

@@ -21,7 +21,7 @@ export function createDoacaoSection() {
                 <div class="text-xl font-bold text-primary">Sitio Dona Lúcia</div>
                 <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
                 <div class="text-lg text-verde-musgo">Ajude animais abandonados a encontrarem um novo lar</div>
-                <a href="https://www.abrigoanimal.org" target="_blank" class="inline-block mt-2 text-primary hover:underline">Saiba mais</a>
+                <a href="https://www.sitiodonalucia.com.br/" target="_blank" class="inline-block mt-2 text-primary hover:underline">Saiba mais</a>
               </div>
               
               <div class="doacao-item">
@@ -32,10 +32,10 @@ export function createDoacaoSection() {
               </div>
               
               <div class="doacao-item">
-                <div class="text-xl font-bold text-primary">Lar dos Idosos</div>
+                <div class="text-xl font-bold text-primary">Casa de repouso menino jesus</div>
                 <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
                 <div class="text-lg text-verde-musgo">Cuidados e companhia para idosos sem família</div>
-                <a href="https://www.lardosidosos.org" target="_blank" class="inline-block mt-2 text-primary hover:underline">Saiba mais</a>
+                <a href="https://www.instagram.com/crmeninojesus/" target="_blank" class="inline-block mt-2 text-primary hover:underline">Saiba mais</a>
               </div>
             </div>
           </div>

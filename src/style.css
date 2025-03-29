@@ -129,3 +129,36 @@ button:hover, a:hover, .gift-item:hover {
     min-height: calc(var(--vh, 1vh) * 100);
   }
 }
+
+/* Add these styles at the end of your style.css file */
+
+/* Cart drawer animations */
+#cart-drawer {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Notification animation */
+#notification {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Cart item hover effect */
+#cart-items > div:hover {
+  background-color: rgba(252, 207, 152, 0.2);
+}
+
+/* Cart counter animation */
+#cart-counter {
+  transition: all 0.3s ease;
+}
+
+/* Checkout button hover effect */
+#checkout-button:not(:disabled):hover {
+  background-color: #8e1c53; /* Slightly darker than primary */
+  transform: translateY(-2px);
+}
+
+/* Cart button hover effect */
+#cart-button:hover {
+  transform: scale(1.1);
+}
