@@ -57,6 +57,9 @@ export function createCartDrawer() {
         </button>
       </div>
     </div>
+    
+    <!-- Script para o confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   `;
 }
 
@@ -89,6 +92,9 @@ window.handleCheckout = () => {
   } else {
     // Finalize purchase
     showNotification('Obrigado pelo seu presente! ❤️');
+    
+    // Lançar confetti ao finalizar
+    launchConfetti();
     
     // Clear cart
     window.cart = [];
@@ -129,6 +135,9 @@ window.copyCartPixCode = () => {
       pixCopyStatus.classList.remove('hidden');
       copyButton.textContent = 'Pix copiado!';
       
+      // Lançar confetti ao copiar o pix
+      launchConfetti();
+      
       // Reset button after 3 seconds
       setTimeout(() => {
         pixCopyStatus.classList.add('hidden');
@@ -140,6 +149,76 @@ window.copyCartPixCode = () => {
       showNotification('Erro ao copiar o código Pix');
     });
 };
+
+// Função para lançar confetti na tela toda
+function launchConfetti() {
+  // Verificar se a biblioteca confetti está disponível
+  if (typeof window.confetti === 'undefined') {
+    console.error('A biblioteca confetti não foi carregada');
+    
+    // Tentar carregar a biblioteca dinamicamente se não estiver disponível
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js';
+    script.onload = function() {
+      console.log('Biblioteca confetti carregada com sucesso');
+      // Chamar a função novamente após carregar a biblioteca
+      setTimeout(executeConfetti, 100);
+    };
+    document.head.appendChild(script);
+    return;
+  }
+  
+  executeConfetti();
+}
+
+// Função que realmente executa o confetti
+function executeConfetti() {
+  // Configuração do confetti para cobrir toda a tela
+  const duration = 3 * 1000; // 3 segundos
+  const animationEnd = Date.now() + duration;
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+  
+  // Cores personalizadas para o confetti (cores de casamento)
+  const colors = ['#FFC0CB', '#FFD700', '#FF69B4', '#FFFFFF', '#F08080'];
+  
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+  
+  // Lançar um canhão de confetti no centro da tela imediatamente
+  window.confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6, x: 0.5 },
+    colors: colors,
+    zIndex: 9999
+  });
+  
+  // Intervalo para lançar confetti em diferentes posições
+  const interval = setInterval(function() {
+    const timeLeft = animationEnd - Date.now();
+    
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+    
+    const particleCount = 50 * (timeLeft / duration);
+    
+    // Lançar confetti de diferentes ângulos
+    window.confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      colors: colors
+    });
+    window.confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      colors: colors
+    });
+  }, 250);
+}
 
 // Function to generate QR code
 function generateQRCode(data) {
