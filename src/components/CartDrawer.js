@@ -29,7 +29,21 @@ export function createCartDrawer() {
       <div id="checkout-section" class="p-4 border-t border-gray-200">
                 
         <div id="payment-info" class="hidden flex flex-col items-center mb-4">
-          <img id="qrcode-image" src="" alt="QR Code Pix" class="w-32 h-32 object-contain mb-3">
+          <div class="qrcode-gift-wrapper relative mb-3 pt-5">
+            <div class="gift-ribbon absolute -top-3 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-rosa-claro rounded-full flex items-center justify-center">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                <rect x="2" y="7" width="20" height="5"></rect>
+                <line x1="12" y1="22" x2="12" y2="7"></line>
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+              </svg>
+            </div>
+            <div class="gift-frame border-4 border-rosa-claro rounded-lg p-2 bg-white">
+              <img id="qrcode-image" src="" alt="QR Code Pix" class="w-32 h-32 object-contain">
+            </div>
+          </div>
           <p class="text-sm text-gray-600 mb-3">chave: anderson.rissardi94@gmail.com</p>
           <button id="copy-pix-button" onclick="copyCartPixCode()" class="bg-green-500 text-white py-2 px-4 rounded w-full mb-2">
             Copiar pix
