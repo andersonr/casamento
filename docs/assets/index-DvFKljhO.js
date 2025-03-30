@@ -1,4 +1,4 @@
-(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))i(a);new MutationObserver(a=>{for(const s of a)if(s.type==="childList")for(const n of s.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function o(a){const s={};return a.integrity&&(s.integrity=a.integrity),a.referrerPolicy&&(s.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?s.credentials="include":a.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function i(a){if(a.ep)return;a.ep=!0;const s=o(a);fetch(a.href,s)}})();function C(t,e,o,i,a){return`
+(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))i(a);new MutationObserver(a=>{for(const r of a)if(r.type==="childList")for(const s of r.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&i(s)}).observe(document,{childList:!0,subtree:!0});function o(a){const r={};return a.integrity&&(r.integrity=a.integrity),a.referrerPolicy&&(r.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?r.credentials="include":a.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(a){if(a.ep)return;a.ep=!0;const r=o(a);fetch(a.href,r)}})();function k(t,e,o,i,a){return`
      <div class="bg-white shadow-md rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 border-2 border-rosa-claro flex flex-col h-full">
       <img src="${t}" alt="${e}" class="w-full h-48 object-cover">
       <div class="p-4 flex flex-col flex-grow">
@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-  `}window.showImage=t=>{const e=document.getElementById(`image-container_${t}`);if(!e.querySelector("img")){const o=document.createElement("img");o.src="./images/150.svg",o.alt="Imagem de presente",o.className="object-cover mt-2",e.appendChild(o);const i=document.createElement("button");i.id=`btn_pix_${t}`,i.textContent="Copiar pix",i.className="bg-green-500 text-white py-2 px-4 rounded w-full",i.onclick=()=>S(t),e.appendChild(i)}};function S(t){const e=document.getElementById(`txt_${t}`).value;navigator.clipboard.writeText(e).then(()=>{document.getElementById(`btn_pix_${t}`).textContent="Pix copiado!"}).catch(o=>{console.error("Erro ao copiar texto: ",o)})}window.cart=[];window.addToCart=(t,e,o,i,a)=>{window.cart.findIndex(n=>n.index===i)===-1?(window.cart.push({imgSrc:t,description:e,value:o,index:i,pixCode:a}),showNotification(`${e} adicionado ao carrinho!`),updateCartCounter(),updateCartDrawer()):showNotification("Este presente já está no seu carrinho!"),openCartDrawer()};window.removeFromCart=t=>{const e=window.cart.findIndex(o=>o.index==t);if(e!==-1){const o=window.cart[e];window.cart.splice(e,1),showNotification(`${o.description} removido do carrinho!`),updateCartCounter(),updateCartDrawer()}};window.updateCartCounter=()=>{const t=document.getElementById("cart-counter");t&&(t.textContent=window.cart.length,t.style.display=window.cart.length>0?"flex":"none")};window.updateCartDrawer=()=>{const t=document.getElementById("cart-items");if(!t)return;if(window.cart.length===0){t.innerHTML='<p class="text-center text-gray-500 py-4">Seu carrinho está vazio</p>',document.getElementById("checkout-button").disabled=!0;return}let e=0,o="";window.cart.forEach(i=>{e+=i.value,o+=`
+  `}window.showImage=t=>{const e=document.getElementById(`image-container_${t}`);if(!e.querySelector("img")){const o=document.createElement("img");o.src="./images/150.svg",o.alt="Imagem de presente",o.className="object-cover mt-2",e.appendChild(o);const i=document.createElement("button");i.id=`btn_pix_${t}`,i.textContent="Copiar pix",i.className="bg-green-500 text-white py-2 px-4 rounded w-full",i.onclick=()=>$(t),e.appendChild(i)}};function $(t){const e=document.getElementById(`txt_${t}`).value;navigator.clipboard.writeText(e).then(()=>{document.getElementById(`btn_pix_${t}`).textContent="Pix copiado!"}).catch(o=>{console.error("Erro ao copiar texto: ",o)})}window.cart=[];window.addToCart=(t,e,o,i,a)=>{window.cart.findIndex(s=>s.index===i)===-1?(window.cart.push({imgSrc:t,description:e,value:o,index:i,pixCode:a}),showNotification(`${e} adicionado ao carrinho!`),updateCartCounter(),updateCartDrawer()):showNotification("Este presente já está no seu carrinho!"),openCartDrawer()};window.removeFromCart=t=>{const e=window.cart.findIndex(o=>o.index==t);if(e!==-1){const o=window.cart[e];window.cart.splice(e,1),showNotification(`${o.description} removido do carrinho!`),updateCartCounter(),updateCartDrawer()}};window.updateCartCounter=()=>{const t=document.getElementById("cart-counter");t&&(t.textContent=window.cart.length,t.style.display=window.cart.length>0?"flex":"none")};window.updateCartDrawer=()=>{const t=document.getElementById("cart-items");if(!t)return;if(window.cart.length===0){t.innerHTML='<p class="text-center text-gray-500 py-4">Seu carrinho está vazio</p>',document.getElementById("checkout-button").disabled=!0;return}let e=0,o="";window.cart.forEach(i=>{e+=i.value,o+=`
       <div class="flex items-center p-2 border-b border-gray-200">
         <img src="${i.imgSrc}" alt="${i.description}" class="w-16 h-16 object-cover rounded">
         <div class="ml-2 flex-grow">
@@ -33,7 +33,7 @@
 	
     <main class="p-8 bg-amarelo-queimado text-primary">
       <div class="grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 1200px; margin: 0 auto;">
-        ${[{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/terapia_jabul0.webp",description:"Terapia para a noiva após os preparativos do casamento",value:150,pixSrc:"./images/150.svg",pixCode:"aaaado00020126510014BR.GOV.BCB.PIX0129anderson.rissardi94@gmail.com5204000053039865406150.005802BR5917Anderson Rissardi6009SAO PAULO610805409000622405207x6YVQBRBJ45U9Mmwdwh6304A556"},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/banda-branca-de-neve_opdxwh.webp",description:"Banda para o casamento",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/creatina_tspg0m.webp",description:"Creatina para o projeto verão",value:80},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/poli_nly7bk.webp",description:"Aulas de dança pro noivo, ele ta precisando",value:171},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/drinks-noivos_wfhz2p.webp",description:"Drinks para o casal na lua de mel",value:60},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/cerveja_jugpxi.webp",description:"Caixinha de cerveja para o noivo",value:40},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/pao_queijo_wtrbl4.webp",description:"Pão de queijo que o noivo adora",value:30},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/netflix_btkkom.webp",description:"1 mês de Netflix pro casal",value:50},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/alianca_zysoz8.webp",description:"Parcela das alianças",value:1e3},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/uber_sfquxt.webp",description:"Uber até o aeroporto",value:120},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907607/whey_rjmk1v.webp",description:"Wheyzinho do monstro",value:110},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/curso_tpm_fq3xmv.webp",description:"Vídeo aula sobre TPM pro noivo não morrer",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/vinho_jc3zv4.webp",description:"Vinhozinho pra noiva",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/aviaozinho_uyzoyr.webp",description:"Aviãozinho do Silvio Santos",value:50},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908307/lavalouca_mfjfbt.jpg",description:"Parcela da lava-louças pro noivo não sofrer",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/contas_afsd7j.webp",description:"Adote uma conta",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/rolex_yv6aqv.webp",description:"Rolex pro noivo",value:10},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/sandalia_wllxso.webp",description:"Um sapatinho pra noiva não machucar o pé",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/manicure_wlmk7b.webp",description:"Manicure pro grande dia",value:180},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/lingerie_nbs9iz.webp",description:"Lingerie sensual pra noiva",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908441/comprinhas_li5row.webp",description:"Umas blusinhas que a noiva não tem nada pra vestir",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908501/cueca-furada_k4bspi.jpg",description:"Umas cuecas pro noivo que anda tão necessitado",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/roupa_noivo_nrxpjj.webp",description:"Parcela da roupa do noivo",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/barbeiro_u2fdvd.webp",description:"Barbeiro do grande dia",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/lua_de_mel_ikoxgm.webp",description:"Parcela da viagem de lua de mel",value:1e3},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/jantar_romantico_k9wkht.webp",description:"Um jantar romântico na lua de mel",value:250},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908122/casino_vkk1bi.jpg",description:"Uma jogadinha no casino",value:120},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908585/sogra_navw3d.jpg",description:"Ajudar no quartinho da sogra",value:550},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908673/buque_n1ofo1.jpg",description:"Jogar o buque na sua direção",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908776/buffet_xydcmq.jpg",description:"Primeiro lugar na fila do buffet",value:500},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908848/tiktok-31_kx7xio.png",description:"Foto e dancinha pro tiktok com os noivos",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909056/fim_orcal1.jpg",description:"Eu não vou embora!! Ajuda na hora extra dos fornecedores",value:80},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909156/tutubarao_r5crnm.jpg",description:"Mergulho com tubarões - Apenas o noivo",value:250},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909240/Cocobay-Resort-2_qapoly.jpg",description:"Parcela do hotel da lua de mel",value:300}].map((e,o)=>C(e.imgSrc,e.description,e.value,o,e.pixCode)).join("")}
+        ${[{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/terapia_jabul0.webp",description:"Terapia para a noiva após os preparativos do casamento",value:150,pixSrc:"./images/150.svg",pixCode:"aaaado00020126510014BR.GOV.BCB.PIX0129anderson.rissardi94@gmail.com5204000053039865406150.005802BR5917Anderson Rissardi6009SAO PAULO610805409000622405207x6YVQBRBJ45U9Mmwdwh6304A556"},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/banda-branca-de-neve_opdxwh.webp",description:"Banda para o casamento",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/creatina_tspg0m.webp",description:"Creatina para o projeto verão",value:80},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/poli_nly7bk.webp",description:"Aulas de dança pro noivo, ele ta precisando",value:171},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/drinks-noivos_wfhz2p.webp",description:"Drinks para o casal na lua de mel",value:60},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/cerveja_jugpxi.webp",description:"Caixinha de cerveja para o noivo",value:40},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/pao_queijo_wtrbl4.webp",description:"Pão de queijo que o noivo adora",value:30},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/netflix_btkkom.webp",description:"1 mês de Netflix pro casal",value:50},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/alianca_zysoz8.webp",description:"Parcela das alianças",value:1e3},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/uber_sfquxt.webp",description:"Uber até o aeroporto",value:120},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907607/whey_rjmk1v.webp",description:"Wheyzinho do monstro",value:110},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/curso_tpm_fq3xmv.webp",description:"Vídeo aula sobre TPM pro noivo não morrer",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/vinho_jc3zv4.webp",description:"Vinhozinho pra noiva",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/aviaozinho_uyzoyr.webp",description:"Aviãozinho do Silvio Santos",value:50},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908307/lavalouca_mfjfbt.jpg",description:"Parcela da lava-louças pro noivo não sofrer",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/contas_afsd7j.webp",description:"Adote uma conta",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/rolex_yv6aqv.webp",description:"Rolex pro noivo",value:10},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/sandalia_wllxso.webp",description:"Um sapatinho pra noiva não machucar o pé",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/manicure_wlmk7b.webp",description:"Manicure pro grande dia",value:180},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/lingerie_nbs9iz.webp",description:"Lingerie sensual pra noiva",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908441/comprinhas_li5row.webp",description:"Umas blusinhas que a noiva não tem nada pra vestir",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908501/cueca-furada_k4bspi.jpg",description:"Umas cuecas pro noivo que anda tão necessitado",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/roupa_noivo_nrxpjj.webp",description:"Parcela da roupa do noivo",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/barbeiro_u2fdvd.webp",description:"Barbeiro do grande dia",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/lua_de_mel_ikoxgm.webp",description:"Parcela da viagem de lua de mel",value:1e3},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/jantar_romantico_k9wkht.webp",description:"Um jantar romântico na lua de mel",value:250},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908122/casino_vkk1bi.jpg",description:"Uma jogadinha no casino",value:120},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908585/sogra_navw3d.jpg",description:"Ajudar no quartinho da sogra",value:550},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908673/buque_n1ofo1.jpg",description:"Jogar o buque na sua direção",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908776/buffet_xydcmq.jpg",description:"Primeiro lugar na fila do buffet",value:500},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908848/tiktok-31_kx7xio.png",description:"Foto e dancinha pro tiktok com os noivos",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909056/fim_orcal1.jpg",description:"Eu não vou embora!! Ajuda na hora extra dos fornecedores",value:80},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909156/tutubarao_r5crnm.jpg",description:"Mergulho com tubarões - Apenas o noivo",value:250},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909240/Cocobay-Resort-2_qapoly.jpg",description:"Parcela do hotel da lua de mel",value:300}].map((e,o)=>k(e.imgSrc,e.description,e.value,o,e.pixCode)).join("")}
       </div>
     </main>
   `}function h(t,e){return`
@@ -44,7 +44,7 @@
         <p class="mt-4 max-w-xl mx-auto">${e}</p>
       </div>
     </header>
-  `}function k(t){return`
+  `}function j(t){return`
     <div class="relative min-h-screen">
       <div class="fixed left-0 top-0 w-64 h-full pointer-events-none bg-contain bg-left bg-no-repeat left-branch"></div>
       <div class="fixed right-0 top-0 w-64 h-full pointer-events-none bg-contain bg-right bg-no-repeat right-branch"></div>
@@ -82,7 +82,21 @@
       <div id="checkout-section" class="p-4 border-t border-gray-200">
                 
         <div id="payment-info" class="hidden flex flex-col items-center mb-4">
-          <img id="qrcode-image" src="" alt="QR Code Pix" class="w-32 h-32 object-contain mb-3">
+          <div class="qrcode-gift-wrapper relative mb-3 pt-5">
+            <div class="gift-ribbon absolute -top-3 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-rosa-claro rounded-full flex items-center justify-center">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                <rect x="2" y="7" width="20" height="5"></rect>
+                <line x1="12" y1="22" x2="12" y2="7"></line>
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+              </svg>
+            </div>
+            <div class="gift-frame border-4 border-rosa-claro rounded-lg p-2 bg-white">
+              <img id="qrcode-image" src="" alt="QR Code Pix" class="w-32 h-32 object-contain">
+            </div>
+          </div>
           <p class="text-sm text-gray-600 mb-3">chave: anderson.rissardi94@gmail.com</p>
           <button id="copy-pix-button" onclick="copyCartPixCode()" class="bg-green-500 text-white py-2 px-4 rounded w-full mb-2">
             Copiar pix
@@ -96,7 +110,10 @@
         </button>
       </div>
     </div>
-  `}window.handleCheckout=()=>{const t=document.getElementById("payment-info"),e=document.getElementById("checkout-button");if(window.cart.length===0){showNotification("Adicione presentes ao carrinho primeiro!");return}if(t.classList.contains("hidden")){t.classList.remove("hidden"),e.textContent="Finalizar";const o=window.cart.reduce((a,s)=>a+s.value,0),i=w(o);document.getElementById("pix-code-input").value=i,b(i)}else showNotification("Obrigado pelo seu presente! ❤️"),window.cart=[],updateCartCounter(),updateCartDrawer(),t.classList.add("hidden"),e.textContent="Enviar Presente",setTimeout(()=>{closeCartDrawer()},1500)};window.copyCartPixCode=()=>{const t=document.getElementById("pix-code-input"),e=document.getElementById("pix-copy-status"),o=document.getElementById("copy-pix-button"),i=window.cart.reduce((s,n)=>s+n.value,0),a=w(i);t.value=a,b(a),navigator.clipboard.writeText(t.value).then(()=>{e.classList.remove("hidden"),o.textContent="Pix copiado!",setTimeout(()=>{e.classList.add("hidden"),o.textContent="Copiar pix"},3e3)}).catch(s=>{console.error("Erro ao copiar texto: ",s),showNotification("Erro ao copiar o código Pix")})};function b(t){const e=`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(t)}`,o=document.getElementById("qrcode-image");o&&(o.src=e,o.alt="QR Code Pix")}function w(t){let e=0;!isNaN(t)&&t>0&&(e=parseFloat(t.toFixed(2)));const o="anderson.rissardi94@gmail.com",i="Anderson Rissardi",a="SAO PAULO",s=e.toFixed(2),n=Math.random().toString(36).substring(2,12);let c=["00020126","51","0014BR.GOV.BCB.PIX","0129"+o,"5204","0000","5303986","54"+s.length.toString().padStart(2,"0")+s,"5802BR","59"+i.length.toString().padStart(2,"0")+i,"60"+a.length.toString().padStart(2,"0")+a,"62140510"+n,"6304"].join("");const r=$(c);return c+r.toString(16).toUpperCase().padStart(4,"0")}function $(t){let e=65535,o=4129,i=new TextEncoder().encode(t);for(let a of i){e^=a<<8;for(let s=0;s<8;s++)e=e&32768?e<<1^o:e<<1}return e&65535}function p(t,e){const o='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" class="fill-verde-musgo"><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>';let i="";for(let a=0;a<t;a++){let s="";e==="right"?s=`position: absolute; transform: rotate(${45+a%2*45}deg); top: ${a*60}px; right: ${a%2*20}px;`:e==="left"?s=`position: absolute; transform: rotate(${-45-a%2*45}deg); top: ${200+a*60}px; left: ${a%2*20}px;`:s=`position: absolute; transform: rotate(${a%2*45}deg); left: ${a*50}px; bottom: ${a%2*15}px;`,i+=`<div style="${s}">${o}</div>`}return i}function m(){return`
+    
+    <!-- Script para o confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"><\/script>
+  `}window.handleCheckout=()=>{const t=document.getElementById("payment-info"),e=document.getElementById("checkout-button");if(window.cart.length===0){showNotification("Adicione presentes ao carrinho primeiro!");return}if(t.classList.contains("hidden")){t.classList.remove("hidden"),e.textContent="Finalizar";const o=window.cart.reduce((a,r)=>a+r.value,0),i=C(o);document.getElementById("pix-code-input").value=i,y(i)}else showNotification("Obrigado pelo seu presente! ❤️"),w(),window.cart=[],updateCartCounter(),updateCartDrawer(),t.classList.add("hidden"),e.textContent="Enviar Presente",setTimeout(()=>{closeCartDrawer()},1500)};window.copyCartPixCode=()=>{const t=document.getElementById("pix-code-input"),e=document.getElementById("pix-copy-status"),o=document.getElementById("copy-pix-button"),i=window.cart.reduce((r,s)=>r+s.value,0),a=C(i);t.value=a,y(a),navigator.clipboard.writeText(t.value).then(()=>{e.classList.remove("hidden"),o.textContent="Pix copiado!",w(),setTimeout(()=>{e.classList.add("hidden"),o.textContent="Copiar pix"},3e3)}).catch(r=>{console.error("Erro ao copiar texto: ",r),showNotification("Erro ao copiar o código Pix")})};function w(){if(typeof window.confetti>"u"){console.error("A biblioteca confetti não foi carregada");const t=document.createElement("script");t.src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js",t.onload=function(){console.log("Biblioteca confetti carregada com sucesso"),setTimeout(b,100)},document.head.appendChild(t);return}b()}function b(){const e=Date.now()+3e3,o={startVelocity:30,spread:360,ticks:60,zIndex:9999},i=["#FFC0CB","#FFD700","#FF69B4","#FFFFFF","#F08080"];function a(s,d){return Math.random()*(d-s)+s}window.confetti({particleCount:150,spread:70,origin:{y:.6,x:.5},colors:i,zIndex:9999});const r=setInterval(function(){const s=e-Date.now();if(s<=0)return clearInterval(r);const d=50*(s/3e3);window.confetti({...o,particleCount:d,origin:{x:a(.1,.3),y:Math.random()-.2},colors:i}),window.confetti({...o,particleCount:d,origin:{x:a(.7,.9),y:Math.random()-.2},colors:i})},250)}function y(t){const e=`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(t)}`,o=document.getElementById("qrcode-image");o&&(o.src=e,o.alt="QR Code Pix")}function C(t){let e=0;!isNaN(t)&&t>0&&(e=parseFloat(t.toFixed(2)));const o="anderson.rissardi94@gmail.com",i="Anderson Rissardi",a="SAO PAULO",r=e.toFixed(2),s=Math.random().toString(36).substring(2,12);let c=["00020126","51","0014BR.GOV.BCB.PIX","0129"+o,"5204","0000","5303986","54"+r.length.toString().padStart(2,"0")+r,"5802BR","59"+i.length.toString().padStart(2,"0")+i,"60"+a.length.toString().padStart(2,"0")+a,"62140510"+s,"6304"].join("");const n=_(c);return c+n.toString(16).toUpperCase().padStart(4,"0")}function _(t){let e=65535,o=4129,i=new TextEncoder().encode(t);for(let a of i){e^=a<<8;for(let r=0;r<8;r++)e=e&32768?e<<1^o:e<<1}return e&65535}function p(t,e){const o='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" class="fill-verde-musgo"><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>';let i="";for(let a=0;a<t;a++){let r="";e==="right"?r=`position: absolute; transform: rotate(${45+a%2*45}deg); top: ${a*60}px; right: ${a%2*20}px;`:e==="left"?r=`position: absolute; transform: rotate(${-45-a%2*45}deg); top: ${200+a*60}px; left: ${a%2*20}px;`:r=`position: absolute; transform: rotate(${a%2*45}deg); left: ${a*50}px; bottom: ${a%2*15}px;`,i+=`<div style="${r}">${o}</div>`}return i}function u(){return`
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <!-- Right side zigzag -->
       <div class="absolute right-4 top-16 opacity-20">
@@ -111,7 +128,7 @@
         ${p(9,"horizontal")}
       </div>
     </div>
-  `}function _(){return`
+  `}function B(){return`
     <section id="hero-section" class="hero-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
@@ -122,7 +139,7 @@
           </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
-          ${m()}
+          ${u()}
           <div class="text-center relative z-10">
             <div class="text-2xl font-dancing mb-5 text-primary tracking-wider">14 ● Junho ● 2025</div>
             <div class="w-16 h-px bg-verde-musgo mx-auto mb-5"></div>
@@ -135,7 +152,7 @@
         </div>
       </div>
     </section>
-  `}function j(){return`
+  `}function I(){return`
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -146,7 +163,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
       <link href="./styles/output.css" rel="stylesheet">
     </head>
-  `}function B(){return`
+  `}function q(){return`
     <section id="agenda-section" class="agenda-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
@@ -157,7 +174,7 @@
           </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
-          ${m()}
+          ${u()}
           <div class="text-center relative z-10">
             <h2 class="text-2xl font-dancing font-bold mb-5 text-primary tracking-wider">Nossa Celebração</h2>
             <div class="w-12 h-px bg-verde-musgo mx-auto mb-6"></div>
@@ -198,7 +215,7 @@
         </div>
       </div>
     </section>
-  `}function q(){return`
+  `}function E(){return`
     <section id="curiosidades-section" class="curiosidades-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
@@ -209,7 +226,7 @@
           </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
-          ${m()}
+          ${u()}
           <div class="text-center relative z-10">
             <h2 class="text-2xl font-bold mb-5 text-primary font-dancing tracking-wider">Nossa História</h2>
             <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
@@ -240,7 +257,7 @@
         </div>
       </div>
     </section>
-  `}function E(){return`
+  `}function z(){return`
     <section id="album-section" class="album-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
@@ -251,7 +268,7 @@
           </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
-          ${m()}
+          ${u()}
           <div class="text-center relative z-10">
             <h2 class="text-2xl font-bold mb-5 text-primary font-dancing tracking-wider">WedShoots</h2>
             <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
@@ -280,7 +297,7 @@
         </div>
       </div>
     </section>
-  `}function I(){return`
+  `}function M(){return`
     <section id="doacao-section" class="doacao-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
@@ -291,7 +308,7 @@
           </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
-          ${m()}
+          ${u()}
           <div class="text-center relative z-10">
             <h2 class="text-2xl font-bold mb-5 text-primary tracking-wider">Caridade</h2>
             <p class="text-lg text-verde-musgo mb-6">Estamos envolvidos com a causa animal, quem sabe nesse momento, você considere fazer uma doação para uma destas instituições:</p>
@@ -321,7 +338,7 @@
         </div>
       </div>
     </section>
-  `}function z(){function t(){let l=window.innerHeight*.01;document.documentElement.style.setProperty("--vh",`${l}px`)}t(),window.addEventListener("resize",t);const e=document.querySelectorAll("section"),o=document.getElementById("hero-section"),i=document.getElementById("agenda-section"),a=document.getElementById("curiosidades-section"),s=document.getElementById("album-section"),n=document.getElementById("doacao-section");i&&(i.style.opacity="0.0"),a&&(a.style.opacity="0.2"),s&&(s.style.opacity="0.2"),n&&(n.style.opacity="0.2"),window.addEventListener("scroll",function(){const l=window.scrollY,c=window.innerHeight;if(o){const r=o.querySelector(".bg-cover");r.style.transform=`translateY(${l*.2}px)`;const d=o.querySelector(".absolute");d.style.opacity=1-l/800}[i,a,s,n].forEach((r,d)=>{if(r){const u=r.getBoundingClientRect().top,v=1-Math.max(0,Math.min(1,u/(c*.8)));r.style.opacity=Math.max(.2,v).toString();const y=Math.max(0,u*.05);r.style.transform=`translateY(${y}px)`}}),e.forEach(r=>{if(r.id!=="hero-section"&&r.id!=="agenda-section"&&r.id!=="curiosidades-section"&&r.id!=="album-section"&&r.id!=="doacao-section"){const d=r.getBoundingClientRect().top,u=r.offsetHeight;if(d<c-50){const v=1-Math.max(0,Math.min(1,d*-1/u));r.style.opacity=Math.min(1,v+.4),r.style.transform=`translateY(${Math.max(0,d*.05)}px)`}}})})}const M=window.location.pathname;let g="";const L=`
+  `}function L(){function t(){let d=window.innerHeight*.01;document.documentElement.style.setProperty("--vh",`${d}px`)}t(),window.addEventListener("resize",t);const e=document.querySelectorAll("section"),o=document.getElementById("hero-section"),i=document.getElementById("agenda-section"),a=document.getElementById("curiosidades-section"),r=document.getElementById("album-section"),s=document.getElementById("doacao-section");i&&(i.style.opacity="0.0"),a&&(a.style.opacity="0.2"),r&&(r.style.opacity="0.2"),s&&(s.style.opacity="0.2"),window.addEventListener("scroll",function(){const d=window.scrollY,c=window.innerHeight;if(o){const n=o.querySelector(".bg-cover");n.style.transform=`translateY(${d*.2}px)`;const l=o.querySelector(".absolute");l.style.opacity=1-d/800}[i,a,r,s].forEach((n,l)=>{if(n){const m=n.getBoundingClientRect().top,v=1-Math.max(0,Math.min(1,m/(c*.8)));n.style.opacity=Math.max(.2,v).toString();const S=Math.max(0,m*.05);n.style.transform=`translateY(${S}px)`}}),e.forEach(n=>{if(n.id!=="hero-section"&&n.id!=="agenda-section"&&n.id!=="curiosidades-section"&&n.id!=="album-section"&&n.id!=="doacao-section"){const l=n.getBoundingClientRect().top,m=n.offsetHeight;if(l<c-50){const v=1-Math.max(0,Math.min(1,l*-1/m));n.style.opacity=Math.min(1,v+.4),n.style.transform=`translateY(${Math.max(0,l*.05)}px)`}}})})}const F=window.location.pathname;let g="";const P=`
   <div class="relative w-full overflow-hidden h-24 mt-8">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20 w-full">
       <div class="flex justify-center">
@@ -329,19 +346,19 @@
       </div>
     </div>
   </div>
-`,P=M.includes("lista-presentes.html");P?g=`
+`,A=F.includes("lista-presentes.html");A?g=`
     ${h("Lista de Presentes","Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)")}  
     ${x()}
     ${f()}
   `:g=`
-    ${j()}
-    ${_()}
+    ${I()}
     ${B()}
     ${q()}
     ${E()}
-    ${I()}
-    ${L}      
+    ${z()}
+    ${M()}
+    ${P}      
     ${h("Lista de Presentes","Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)")}  
     ${x()}
     ${f()}
-  `;document.querySelector("#app").innerHTML=k(g);document.addEventListener("DOMContentLoaded",()=>{z(),window.updateCartCounter&&window.updateCartCounter()});
+  `;document.querySelector("#app").innerHTML=j(g);document.addEventListener("DOMContentLoaded",()=>{L(),window.updateCartCounter&&window.updateCartCounter()});
