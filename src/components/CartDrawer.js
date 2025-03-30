@@ -27,10 +27,7 @@ export function createCartDrawer() {
       </div>
       
       <div id="checkout-section" class="p-4 border-t border-gray-200">
-        <div id="cart-total" class="mb-4">
-          <p class="text-right font-bold text-rosa-claro">Total: R$ 0,00</p>
-        </div>
-        
+                
         <div id="payment-info" class="hidden flex flex-col items-center mb-4">
           <img id="qrcode-image" src="" alt="QR Code Pix" class="w-32 h-32 object-contain mb-3">
           <p class="text-sm text-gray-600 mb-3">chave: anderson.rissardi94@gmail.com</p>
@@ -145,55 +142,55 @@ function generateQRCode(data) {
 
 // Helper function to generate a pix code based on total value
 function generatePixCode(totalValue) {
-if(isNaN(totalValue) || totalValue <= 0){
-  totalValue = 0;
-}
+  let valor = 0;
 
-  // This is a placeholder - you should replace with your actual pix code generation logic
-  // For now, we'll use a static code with the total value embedded
-  return `00020126510014BR.GOV.BCB.PIX0129anderson.rissardi94@gmail.com52040000530398654064${totalValue.toFixed(2)}5802BR5917Anderson Rissardi6009SAO PAULO610805409000622405207x6YVQBRBJ45U9Mmwdwh6304A556`;
-}
-
-// Make sure to update the updateCartDrawer function to also update the total in the cart
-window.updateCartDrawer = () => {
-  const cartItemsContainer = document.getElementById('cart-items');
-  const cartTotal = document.getElementById('cart-total');
-  
-  if (!cartItemsContainer || !cartTotal) return;
-  
-  if (window.cart.length === 0) {
-    cartItemsContainer.innerHTML = '<p class="text-center text-gray-500 py-4">Seu carrinho está vazio</p>';
-    document.getElementById('checkout-button').disabled = true;
-    cartTotal.innerHTML = '<p class="text-right font-bold text-rosa-claro">Total: R$ 0,00</p>';
-    
-    // Hide payment info if visible
-    document.getElementById('payment-info').classList.add('hidden');
-    document.getElementById('checkout-button').textContent = 'Enviar Presente';
-    return;
+  if(!isNaN(totalValue) && totalValue > 0){
+    valor = parseFloat(totalValue.toFixed(2));
   }
   
-  let totalValue = 0;
-  let cartHTML = '';
+  const chave = 'anderson.rissardi94@gmail.com';
+  const nome = 'Anderson Rissardi';
+  const cidade = 'SAO PAULO';
   
-  window.cart.forEach(item => {
-    totalValue += item.value;
-    cartHTML += `
-      <div class="flex items-center p-2 border-b border-gray-200">
-        <img src="${item.imgSrc}" alt="${item.description}" class="w-16 h-16 object-cover rounded">
-        <div class="ml-2 flex-grow">
-          <p class="text-sm text-rosa-claro">${item.description}</p>
-          <p class="text-sm font-bold text-rosa-claro">R$ ${item.value.toFixed(2).replace('.', ',')}</p>
-        </div>
-        <button onclick="removeFromCart(${item.index})" class="text-red-500 hover:text-red-700">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-    `;
-  });
+  // Format the amount correctly
+  const valorFormatado = valor.toFixed(2);
   
-  cartItemsContainer.innerHTML = cartHTML;
-  cartTotal.innerHTML = `<p class="text-right font-bold text-rosa-claro">Total: R$ ${totalValue.toFixed(2).replace('.', ',')}</p>`;
-  document.getElementById('checkout-button').disabled = false;
-};
+  // Create a random transaction ID (10 characters like in your example)
+  const txid = Math.random().toString(36).substring(2, 12);
+  
+  // Build the PIX code following the EMV standard
+  let payload = [
+    "00020126", // Payload Format Indicator + Point of Initiation Method
+    "51", // PIX GUI
+    "0014BR.GOV.BCB.PIX", // PIX key type indicator
+    "0129" + chave, // PIX key value with length prefix
+    "5204", "0000", // Merchant Category Code
+    "5303986", // Currency (BRL)
+    "54" + valorFormatado.length.toString().padStart(2, '0') + valorFormatado, // Transaction amount
+    "5802BR", // Country code
+    "59" + nome.length.toString().padStart(2, '0') + nome, // Recipient name
+    "60" + cidade.length.toString().padStart(2, '0') + cidade, // City
+    "6214" + "0510" + txid, // Fixed length to match your bank's example (14 = length of "0510" + txid)
+    "6304" // CRC16 placeholder
+  ];
+  
+  // Join all parts and calculate CRC16
+  let pixString = payload.join("");
+  const crc = crc16(pixString);
+  
+  // Add CRC16 to the end
+  return pixString + crc.toString(16).toUpperCase().padStart(4, '0');
+}
+
+function crc16(str) {
+  let crc = 0xFFFF;
+  let polynomial = 0x1021;
+  let bytes = new TextEncoder().encode(str);
+  for (let byte of bytes) {
+      crc ^= byte << 8;
+      for (let i = 0; i < 8; i++) {
+          crc = (crc & 0x8000) ? (crc << 1) ^ polynomial : crc << 1;
+      }
+  }
+  return crc & 0xFFFF;
+}
