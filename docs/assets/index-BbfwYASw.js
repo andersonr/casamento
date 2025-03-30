@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-  `}window.showImage=t=>{const e=document.getElementById(`image-container_${t}`);if(!e.querySelector("img")){const o=document.createElement("img");o.src="./images/150.svg",o.alt="Imagem de presente",o.className="object-cover mt-2",e.appendChild(o);const i=document.createElement("button");i.id=`btn_pix_${t}`,i.textContent="Copiar pix",i.className="bg-green-500 text-white py-2 px-4 rounded w-full",i.onclick=()=>k(t),e.appendChild(i)}};function k(t){const e=document.getElementById(`txt_${t}`).value;navigator.clipboard.writeText(e).then(()=>{document.getElementById(`btn_pix_${t}`).textContent="Pix copiado!"}).catch(o=>{console.error("Erro ao copiar texto: ",o)})}window.cart=[];window.addToCart=(t,e,o,i,a)=>{window.cart.findIndex(n=>n.index===i)===-1?(window.cart.push({imgSrc:t,description:e,value:o,index:i,pixCode:a}),showNotification(`${e} adicionado ao carrinho!`),updateCartCounter(),updateCartDrawer()):showNotification("Este presente já está no seu carrinho!"),openCartDrawer()};window.removeFromCart=t=>{const e=window.cart.findIndex(o=>o.index==t);if(e!==-1){const o=window.cart[e];window.cart.splice(e,1),showNotification(`${o.description} removido do carrinho!`),updateCartCounter(),updateCartDrawer()}};window.updateCartCounter=()=>{const t=document.getElementById("cart-counter");t&&(t.textContent=window.cart.length,t.style.display=window.cart.length>0?"flex":"none")};window.updateCartDrawer=()=>{const t=document.getElementById("cart-items");if(!t)return;if(window.cart.length===0){t.innerHTML='<p class="text-center text-gray-500 py-4">Seu carrinho está vazio</p>',document.getElementById("checkout-button").disabled=!0;return}let e=0,o="";window.cart.forEach(i=>{e+=i.value,o+=`
+  `}window.showImage=t=>{const e=document.getElementById(`image-container_${t}`);if(!e.querySelector("img")){const o=document.createElement("img");o.src="./images/150.svg",o.alt="Imagem de presente",o.className="object-cover mt-2",e.appendChild(o);const i=document.createElement("button");i.id=`btn_pix_${t}`,i.textContent="Copiar pix",i.className="bg-green-500 text-white py-2 px-4 rounded w-full",i.onclick=()=>S(t),e.appendChild(i)}};function S(t){const e=document.getElementById(`txt_${t}`).value;navigator.clipboard.writeText(e).then(()=>{document.getElementById(`btn_pix_${t}`).textContent="Pix copiado!"}).catch(o=>{console.error("Erro ao copiar texto: ",o)})}window.cart=[];window.addToCart=(t,e,o,i,a)=>{window.cart.findIndex(n=>n.index===i)===-1?(window.cart.push({imgSrc:t,description:e,value:o,index:i,pixCode:a}),showNotification(`${e} adicionado ao carrinho!`),updateCartCounter(),updateCartDrawer()):showNotification("Este presente já está no seu carrinho!"),openCartDrawer()};window.removeFromCart=t=>{const e=window.cart.findIndex(o=>o.index==t);if(e!==-1){const o=window.cart[e];window.cart.splice(e,1),showNotification(`${o.description} removido do carrinho!`),updateCartCounter(),updateCartDrawer()}};window.updateCartCounter=()=>{const t=document.getElementById("cart-counter");t&&(t.textContent=window.cart.length,t.style.display=window.cart.length>0?"flex":"none")};window.updateCartDrawer=()=>{const t=document.getElementById("cart-items");if(!t)return;if(window.cart.length===0){t.innerHTML='<p class="text-center text-gray-500 py-4">Seu carrinho está vazio</p>',document.getElementById("checkout-button").disabled=!0;return}let e=0,o="";window.cart.forEach(i=>{e+=i.value,o+=`
       <div class="flex items-center p-2 border-b border-gray-200">
         <img src="${i.imgSrc}" alt="${i.description}" class="w-16 h-16 object-cover rounded">
         <div class="ml-2 flex-grow">
@@ -44,7 +44,7 @@
         <p class="mt-4 max-w-xl mx-auto">${e}</p>
       </div>
     </header>
-  `}function $(t){return`
+  `}function k(t){return`
     <div class="relative min-h-screen">
       <div class="fixed left-0 top-0 w-64 h-full pointer-events-none bg-contain bg-left bg-no-repeat left-branch"></div>
       <div class="fixed right-0 top-0 w-64 h-full pointer-events-none bg-contain bg-right bg-no-repeat right-branch"></div>
@@ -80,10 +80,7 @@
       </div>
       
       <div id="checkout-section" class="p-4 border-t border-gray-200">
-        <div id="cart-total" class="mb-4">
-          <p class="text-right font-bold text-rosa-claro">Total: R$ 0,00</p>
-        </div>
-        
+                
         <div id="payment-info" class="hidden flex flex-col items-center mb-4">
           <img id="qrcode-image" src="" alt="QR Code Pix" class="w-32 h-32 object-contain mb-3">
           <p class="text-sm text-gray-600 mb-3">chave: anderson.rissardi94@gmail.com</p>
@@ -99,35 +96,22 @@
         </button>
       </div>
     </div>
-  `}window.handleCheckout=()=>{const t=document.getElementById("payment-info"),e=document.getElementById("checkout-button");if(window.cart.length===0){showNotification("Adicione presentes ao carrinho primeiro!");return}if(t.classList.contains("hidden")){t.classList.remove("hidden"),e.textContent="Finalizar";const o=window.cart.reduce((a,s)=>a+s.value,0),i=w(o);document.getElementById("pix-code-input").value=i,b(i)}else showNotification("Obrigado pelo seu presente! ❤️"),window.cart=[],updateCartCounter(),updateCartDrawer(),t.classList.add("hidden"),e.textContent="Enviar Presente",setTimeout(()=>{closeCartDrawer()},1500)};window.copyCartPixCode=()=>{const t=document.getElementById("pix-code-input"),e=document.getElementById("pix-copy-status"),o=document.getElementById("copy-pix-button"),i=window.cart.reduce((s,n)=>s+n.value,0),a=w(i);t.value=a,b(a),navigator.clipboard.writeText(t.value).then(()=>{e.classList.remove("hidden"),o.textContent="Pix copiado!",setTimeout(()=>{e.classList.add("hidden"),o.textContent="Copiar pix"},3e3)}).catch(s=>{console.error("Erro ao copiar texto: ",s),showNotification("Erro ao copiar o código Pix")})};function b(t){const e=`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(t)}`,o=document.getElementById("qrcode-image");o&&(o.src=e,o.alt="QR Code Pix")}function w(t){return(isNaN(t)||t<=0)&&(t=0),`00020126510014BR.GOV.BCB.PIX0129anderson.rissardi94@gmail.com52040000530398654064${t.toFixed(2)}5802BR5917Anderson Rissardi6009SAO PAULO610805409000622405207x6YVQBRBJ45U9Mmwdwh6304A556`}window.updateCartDrawer=()=>{const t=document.getElementById("cart-items"),e=document.getElementById("cart-total");if(!t||!e)return;if(window.cart.length===0){t.innerHTML='<p class="text-center text-gray-500 py-4">Seu carrinho está vazio</p>',document.getElementById("checkout-button").disabled=!0,e.innerHTML='<p class="text-right font-bold text-rosa-claro">Total: R$ 0,00</p>',document.getElementById("payment-info").classList.add("hidden"),document.getElementById("checkout-button").textContent="Enviar Presente";return}let o=0,i="";window.cart.forEach(a=>{o+=a.value,i+=`
-      <div class="flex items-center p-2 border-b border-gray-200">
-        <img src="${a.imgSrc}" alt="${a.description}" class="w-16 h-16 object-cover rounded">
-        <div class="ml-2 flex-grow">
-          <p class="text-sm text-rosa-claro">${a.description}</p>
-          <p class="text-sm font-bold text-rosa-claro">R$ ${a.value.toFixed(2).replace(".",",")}</p>
-        </div>
-        <button onclick="removeFromCart(${a.index})" class="text-red-500 hover:text-red-700">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-    `}),t.innerHTML=i,e.innerHTML=`<p class="text-right font-bold text-rosa-claro">Total: R$ ${o.toFixed(2).replace(".",",")}</p>`,document.getElementById("checkout-button").disabled=!1};function m(t,e){const o='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" class="fill-verde-musgo"><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>';let i="";for(let a=0;a<t;a++){let s="";e==="right"?s=`position: absolute; transform: rotate(${45+a%2*45}deg); top: ${a*60}px; right: ${a%2*20}px;`:e==="left"?s=`position: absolute; transform: rotate(${-45-a%2*45}deg); top: ${200+a*60}px; left: ${a%2*20}px;`:s=`position: absolute; transform: rotate(${a%2*45}deg); left: ${a*50}px; bottom: ${a%2*15}px;`,i+=`<div style="${s}">${o}</div>`}return i}function l(){return`
+  `}window.handleCheckout=()=>{const t=document.getElementById("payment-info"),e=document.getElementById("checkout-button");if(window.cart.length===0){showNotification("Adicione presentes ao carrinho primeiro!");return}if(t.classList.contains("hidden")){t.classList.remove("hidden"),e.textContent="Finalizar";const o=window.cart.reduce((a,s)=>a+s.value,0),i=w(o);document.getElementById("pix-code-input").value=i,b(i)}else showNotification("Obrigado pelo seu presente! ❤️"),window.cart=[],updateCartCounter(),updateCartDrawer(),t.classList.add("hidden"),e.textContent="Enviar Presente",setTimeout(()=>{closeCartDrawer()},1500)};window.copyCartPixCode=()=>{const t=document.getElementById("pix-code-input"),e=document.getElementById("pix-copy-status"),o=document.getElementById("copy-pix-button"),i=window.cart.reduce((s,n)=>s+n.value,0),a=w(i);t.value=a,b(a),navigator.clipboard.writeText(t.value).then(()=>{e.classList.remove("hidden"),o.textContent="Pix copiado!",setTimeout(()=>{e.classList.add("hidden"),o.textContent="Copiar pix"},3e3)}).catch(s=>{console.error("Erro ao copiar texto: ",s),showNotification("Erro ao copiar o código Pix")})};function b(t){const e=`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(t)}`,o=document.getElementById("qrcode-image");o&&(o.src=e,o.alt="QR Code Pix")}function w(t){let e=0;!isNaN(t)&&t>0&&(e=parseFloat(t.toFixed(2)));const o="anderson.rissardi94@gmail.com",i="Anderson Rissardi",a="SAO PAULO",s=e.toFixed(2),n=Math.random().toString(36).substring(2,12);let c=["00020126","51","0014BR.GOV.BCB.PIX","0129"+o,"5204","0000","5303986","54"+s.length.toString().padStart(2,"0")+s,"5802BR","59"+i.length.toString().padStart(2,"0")+i,"60"+a.length.toString().padStart(2,"0")+a,"62140510"+n,"6304"].join("");const r=$(c);return c+r.toString(16).toUpperCase().padStart(4,"0")}function $(t){let e=65535,o=4129,i=new TextEncoder().encode(t);for(let a of i){e^=a<<8;for(let s=0;s<8;s++)e=e&32768?e<<1^o:e<<1}return e&65535}function p(t,e){const o='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" class="fill-verde-musgo"><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>';let i="";for(let a=0;a<t;a++){let s="";e==="right"?s=`position: absolute; transform: rotate(${45+a%2*45}deg); top: ${a*60}px; right: ${a%2*20}px;`:e==="left"?s=`position: absolute; transform: rotate(${-45-a%2*45}deg); top: ${200+a*60}px; left: ${a%2*20}px;`:s=`position: absolute; transform: rotate(${a%2*45}deg); left: ${a*50}px; bottom: ${a%2*15}px;`,i+=`<div style="${s}">${o}</div>`}return i}function m(){return`
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <!-- Right side zigzag -->
       <div class="absolute right-4 top-16 opacity-20">
-        ${m(6,"right")}
+        ${p(6,"right")}
       </div>
       <!-- Left side zigzag -->
       <div class="absolute left-4 top-32 opacity-20">
-        ${m(6,"left")}
+        ${p(6,"left")}
       </div>
       <!-- Bottom zigzag -->
       <div class="absolute bottom-8 left-12 opacity-20">
-        ${m(9,"horizontal")}
+        ${p(9,"horizontal")}
       </div>
     </div>
-  `}function S(){return`
+  `}function _(){return`
     <section id="hero-section" class="hero-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
@@ -138,7 +122,7 @@
           </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
-          ${l()}
+          ${m()}
           <div class="text-center relative z-10">
             <div class="text-2xl font-dancing mb-5 text-primary tracking-wider">14 ● Junho ● 2025</div>
             <div class="w-16 h-px bg-verde-musgo mx-auto mb-5"></div>
@@ -151,7 +135,7 @@
         </div>
       </div>
     </section>
-  `}function B(){return`
+  `}function j(){return`
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -162,7 +146,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
       <link href="./styles/output.css" rel="stylesheet">
     </head>
-  `}function _(){return`
+  `}function B(){return`
     <section id="agenda-section" class="agenda-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
@@ -173,7 +157,7 @@
           </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
-          ${l()}
+          ${m()}
           <div class="text-center relative z-10">
             <h2 class="text-2xl font-dancing font-bold mb-5 text-primary tracking-wider">Nossa Celebração</h2>
             <div class="w-12 h-px bg-verde-musgo mx-auto mb-6"></div>
@@ -214,7 +198,7 @@
         </div>
       </div>
     </section>
-  `}function j(){return`
+  `}function q(){return`
     <section id="curiosidades-section" class="curiosidades-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
@@ -225,7 +209,7 @@
           </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
-          ${l()}
+          ${m()}
           <div class="text-center relative z-10">
             <h2 class="text-2xl font-bold mb-5 text-primary font-dancing tracking-wider">Nossa História</h2>
             <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
@@ -267,7 +251,7 @@
           </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
-          ${l()}
+          ${m()}
           <div class="text-center relative z-10">
             <h2 class="text-2xl font-bold mb-5 text-primary font-dancing tracking-wider">WedShoots</h2>
             <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
@@ -307,7 +291,7 @@
           </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
-          ${l()}
+          ${m()}
           <div class="text-center relative z-10">
             <h2 class="text-2xl font-bold mb-5 text-primary tracking-wider">Caridade</h2>
             <p class="text-lg text-verde-musgo mb-6">Estamos envolvidos com a causa animal, quem sabe nesse momento, você considere fazer uma doação para uma destas instituições:</p>
@@ -337,27 +321,27 @@
         </div>
       </div>
     </section>
-  `}function q(){function t(){let c=window.innerHeight*.01;document.documentElement.style.setProperty("--vh",`${c}px`)}t(),window.addEventListener("resize",t);const e=document.querySelectorAll("section"),o=document.getElementById("hero-section"),i=document.getElementById("agenda-section"),a=document.getElementById("curiosidades-section"),s=document.getElementById("album-section"),n=document.getElementById("doacao-section");i&&(i.style.opacity="0.0"),a&&(a.style.opacity="0.2"),s&&(s.style.opacity="0.2"),n&&(n.style.opacity="0.2"),window.addEventListener("scroll",function(){const c=window.scrollY,g=window.innerHeight;if(o){const r=o.querySelector(".bg-cover");r.style.transform=`translateY(${c*.2}px)`;const d=o.querySelector(".absolute");d.style.opacity=1-c/800}[i,a,s,n].forEach((r,d)=>{if(r){const u=r.getBoundingClientRect().top,p=1-Math.max(0,Math.min(1,u/(g*.8)));r.style.opacity=Math.max(.2,p).toString();const y=Math.max(0,u*.05);r.style.transform=`translateY(${y}px)`}}),e.forEach(r=>{if(r.id!=="hero-section"&&r.id!=="agenda-section"&&r.id!=="curiosidades-section"&&r.id!=="album-section"&&r.id!=="doacao-section"){const d=r.getBoundingClientRect().top,u=r.offsetHeight;if(d<g-50){const p=1-Math.max(0,Math.min(1,d*-1/u));r.style.opacity=Math.min(1,p+.4),r.style.transform=`translateY(${Math.max(0,d*.05)}px)`}}})})}const M=window.location.pathname;let v="";const L=`
+  `}function z(){function t(){let l=window.innerHeight*.01;document.documentElement.style.setProperty("--vh",`${l}px`)}t(),window.addEventListener("resize",t);const e=document.querySelectorAll("section"),o=document.getElementById("hero-section"),i=document.getElementById("agenda-section"),a=document.getElementById("curiosidades-section"),s=document.getElementById("album-section"),n=document.getElementById("doacao-section");i&&(i.style.opacity="0.0"),a&&(a.style.opacity="0.2"),s&&(s.style.opacity="0.2"),n&&(n.style.opacity="0.2"),window.addEventListener("scroll",function(){const l=window.scrollY,c=window.innerHeight;if(o){const r=o.querySelector(".bg-cover");r.style.transform=`translateY(${l*.2}px)`;const d=o.querySelector(".absolute");d.style.opacity=1-l/800}[i,a,s,n].forEach((r,d)=>{if(r){const u=r.getBoundingClientRect().top,v=1-Math.max(0,Math.min(1,u/(c*.8)));r.style.opacity=Math.max(.2,v).toString();const y=Math.max(0,u*.05);r.style.transform=`translateY(${y}px)`}}),e.forEach(r=>{if(r.id!=="hero-section"&&r.id!=="agenda-section"&&r.id!=="curiosidades-section"&&r.id!=="album-section"&&r.id!=="doacao-section"){const d=r.getBoundingClientRect().top,u=r.offsetHeight;if(d<c-50){const v=1-Math.max(0,Math.min(1,d*-1/u));r.style.opacity=Math.min(1,v+.4),r.style.transform=`translateY(${Math.max(0,d*.05)}px)`}}})})}const M=window.location.pathname;let g="";const L=`
   <div class="relative w-full overflow-hidden h-24 mt-8">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20 w-full">
       <div class="flex justify-center">
-        ${m(100,"horizontal")}
+        ${p(100,"horizontal")}
       </div>
     </div>
   </div>
-`,z=M.includes("lista-presentes.html");z?v=`
+`,P=M.includes("lista-presentes.html");P?g=`
     ${h("Lista de Presentes","Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)")}  
     ${x()}
     ${f()}
-  `:v=`
-    ${B()}
-    ${S()}
-    ${_()}
+  `:g=`
     ${j()}
+    ${_()}
+    ${B()}
+    ${q()}
     ${E()}
     ${I()}
     ${L}      
     ${h("Lista de Presentes","Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)")}  
     ${x()}
     ${f()}
-  `;document.querySelector("#app").innerHTML=$(v);document.addEventListener("DOMContentLoaded",()=>{q(),window.updateCartCounter&&window.updateCartCounter()});
+  `;document.querySelector("#app").innerHTML=k(g);document.addEventListener("DOMContentLoaded",()=>{z(),window.updateCartCounter&&window.updateCartCounter()});
