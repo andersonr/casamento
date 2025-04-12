@@ -29,9 +29,9 @@ export default {
 			},
 			fontFamily: {
 				dancing: ["Dancing Script", "cursive"],
-				lato: ["Lato", "sans-serif"],
+				// lato: ["Lato", "sans-serif"],
 				raleway: ["Raleway", "sans-serif"],
-				opensans: ["Open Sans", "sans-serif"],
+				// opensans: ["Open Sans", "sans-serif"],
 				delius: ["Delius", "cursive"],
 			},
 		},

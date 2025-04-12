@@ -10,7 +10,7 @@ export function createCuriosidadesSection() {
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
           ${createPawDecoration()}
           <div class="text-center font-raleway relative z-10">
-            <h2 class="text-2xl font-delius font-bold mb-5 text-primary font-dancing tracking-wider">Nossa História</h2>
+            <h2 class="text-2xl font-delius font-bold mb-5 text-primary tracking-wider">Nossa História</h2>
             <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
 
             <div class="space-y-6">
