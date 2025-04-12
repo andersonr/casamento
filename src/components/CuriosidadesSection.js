@@ -6,36 +6,32 @@ export function createCuriosidadesSection() {
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
           <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467893/PR%C3%89_WEDDING-27_uu4gmn.jpg')"></div>
-          <div class="absolute bottom-12 left-12 text-primary">
-            <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3  font-bold tracking-wide">Curiosidades</h1>
-            <p class="text-xl  italic">Conheça mais sobre nossa história</p>
-          </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
           ${createPawDecoration()}
-          <div class="text-center relative z-10">
-            <h2 class="text-2xl font-bold mb-5 text-primary font-dancing tracking-wider">Nossa História</h2>
+          <div class="text-center font-raleway relative z-10">
+            <h2 class="text-2xl font-delius font-bold mb-5 text-primary font-dancing tracking-wider">Nossa História</h2>
             <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
 
             <div class="space-y-6">
               <div class="curiosidade-item">
-                <div class="text-xl font-bold text-primary">Quem deu o primeiro passo?</div>
-                <div class="text-lg text-verde-musgo">O Anderson, que fingiu precisar de "mais sessões" de fisioterapia só para ver a recepcionista de sorriso encantador mais vezes!</div>
+                <div class="text-lg font-bold text-primary">Quem deu o primeiro passo?</div>
+                <div class="text-base text-verde-musgo">O Anderson, que fingiu precisar de "mais sessões" de fisioterapia só para ver a recepcionista de sorriso encantador. <br/> Estratégia digna de comédia romântica 🤣</div>
               </div>
               
               <div class="curiosidade-item">
-                <div class="text-xl font-bold text-primary">Quem é o mais bagunceiro?</div>
-                <div class="text-lg text-verde-musgo">O Anderson jura que é a Bruna, a Bruna tem certeza que é o Anderson, a Mel🐕 e o Flokinho🐶, por mais que tentem, não conseguem superar os dois!</div>
+                <div class="text-lg font-bold text-primary">Quem é o mais bagunceiro?</div>
+                <div class="text-base text-verde-musgo">O Anderson jura que é a Bruna, a Bruna tem certeza que é o Anderson. Enquanto isso, a Mel🐕 e o Floquinho🐶 observam tudo e pensam: "a gente tenta acompanhar, mas é difícil competir com esses dois!"</div>
               </div>              
               
               <div class="curiosidade-item">
-                <div class="text-xl font-bold text-primary">Quem cozinha melhor?</div>
-                <div class="text-lg text-verde-musgo">A Bruna é a chef oficial, mas o Anderson é o mestre churrasqueiro e especialista em pedir delivery nos momentos mais necessários!</div>
+                <div class="text-lg font-bold text-primary">Quem cozinha melhor?</div>
+                <div class="text-base text-verde-musgo">A Bruna é a chef da casa - cozinha com amor e talento.<br/>O Anderson? Ele domina a arte do churrasco e é mestre em pedidos estratégicos no ifood (o verdadeiro salvador nos momentos de fome súbita)</div>
               </div>
 
               <div class="curiosidade-item">
-                <div class="text-xl font-bold text-primary">Qual a viagem mais marcantes que fizeram?</div>
-                <div class="text-lg text-verde-musgo">O Anderson acha que é Maragogi e suas lindas praias e a Bruna prefere a arquitetura, os parques e o doce de leite de Buenos Aires!</div>
+                <div class="text-lg font-bold text-primary">Qual a viagem mais marcante que fizeram?</div>
+                <div class="text-base text-verde-musgo">O Anderson acha que é Maragogi e suas lindas praias e pra Bruna, nada supera a arquitetura charmosa, os parques e, claro, o doce de leite de Buenos Aires. (E sim, já estamos aceitando sugestões pro próximo destino!)</div>
               </div>              
               
             </div>

@@ -15,7 +15,7 @@ export function createGiftList() {
 		{
 			imgSrc:
 				"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/banda-branca-de-neve_opdxwh.webp",
-			description: "Banda para o casamento",
+			description: "Banda no casamento",
 			value: 100,
 		},
 		{
@@ -216,7 +216,7 @@ export function createGiftList() {
 
 	return `
 	
-    <main class="p-8 bg-amarelo-queimado text-primary">
+    <main class="p-8 bg-amarelo-queimado text-primary text-raleway">
       <div class="grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 1200px; margin: 0 auto;">
         ${gifts
 					.map((gift, index) =>

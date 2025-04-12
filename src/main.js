@@ -52,7 +52,7 @@ if (isGiftListPage) {
     ${headerPawTrail}      
     ${createHeader(
       "Lista de Presentes",
-      "Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)",
+      "Se você quiser nos presentear, ficaremos super felizes! Aceitamos contribuições para nossa lua de mel dos sonhos e também para ajudar a tornar nosso lar ainda mais especial. 🏡",
     )}  
     ${createGiftList()}
     ${createCartDrawer()}
