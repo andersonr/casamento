@@ -113,7 +113,7 @@
     
     <!-- Script para o confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"><\/script>
-  `}window.handleCheckout=()=>{const t=document.getElementById("payment-info"),e=document.getElementById("checkout-button");if(window.cart.length===0){showNotification("Adicione presentes ao carrinho primeiro!");return}if(t.classList.contains("hidden")){t.classList.remove("hidden"),e.textContent="Finalizar";const o=window.cart.reduce((a,r)=>a+r.value,0),i=C(o);document.getElementById("pix-code-input").value=i,y(i)}else showNotification("Obrigado pelo seu presente! ❤️"),w(),window.cart=[],updateCartCounter(),updateCartDrawer(),t.classList.add("hidden"),e.textContent="Enviar Presente",setTimeout(()=>{closeCartDrawer()},1500)};window.copyCartPixCode=()=>{const t=document.getElementById("pix-code-input"),e=document.getElementById("pix-copy-status"),o=document.getElementById("copy-pix-button"),i=window.cart.reduce((r,s)=>r+s.value,0),a=C(i);t.value=a,y(a),navigator.clipboard.writeText(t.value).then(()=>{e.classList.remove("hidden"),o.textContent="Pix copiado!",w(),setTimeout(()=>{e.classList.add("hidden"),o.textContent="Copiar pix"},3e3)}).catch(r=>{console.error("Erro ao copiar texto: ",r),showNotification("Erro ao copiar o código Pix")})};function w(){if(typeof window.confetti>"u"){console.error("A biblioteca confetti não foi carregada");const t=document.createElement("script");t.src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js",t.onload=function(){console.log("Biblioteca confetti carregada com sucesso"),setTimeout(b,100)},document.head.appendChild(t);return}b()}function b(){const e=Date.now()+3e3,o={startVelocity:30,spread:360,ticks:60,zIndex:9999},i=["#FFC0CB","#FFD700","#FF69B4","#FFFFFF","#F08080"];function a(s,d){return Math.random()*(d-s)+s}window.confetti({particleCount:150,spread:70,origin:{y:.6,x:.5},colors:i,zIndex:9999});const r=setInterval(function(){const s=e-Date.now();if(s<=0)return clearInterval(r);const d=50*(s/3e3);window.confetti({...o,particleCount:d,origin:{x:a(.1,.3),y:Math.random()-.2},colors:i}),window.confetti({...o,particleCount:d,origin:{x:a(.7,.9),y:Math.random()-.2},colors:i})},250)}function y(t){const e=`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(t)}`,o=document.getElementById("qrcode-image");o&&(o.src=e,o.alt="QR Code Pix")}function C(t){let e=0;!isNaN(t)&&t>0&&(e=parseFloat(t.toFixed(2)));const o="anderson.rissardi94@gmail.com",i="Anderson Rissardi",a="SAO PAULO",r=e.toFixed(2),s=Math.random().toString(36).substring(2,12);let c=["00020126","51","0014BR.GOV.BCB.PIX","0129"+o,"5204","0000","5303986","54"+r.length.toString().padStart(2,"0")+r,"5802BR","59"+i.length.toString().padStart(2,"0")+i,"60"+a.length.toString().padStart(2,"0")+a,"62140510"+s,"6304"].join("");const n=_(c);return c+n.toString(16).toUpperCase().padStart(4,"0")}function _(t){let e=65535,o=4129,i=new TextEncoder().encode(t);for(let a of i){e^=a<<8;for(let r=0;r<8;r++)e=e&32768?e<<1^o:e<<1}return e&65535}function p(t,e){const o='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" class="fill-verde-musgo"><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>';let i="";for(let a=0;a<t;a++){let r="";e==="right"?r=`position: absolute; transform: rotate(${45+a%2*45}deg); top: ${a*60}px; right: ${a%2*20}px;`:e==="left"?r=`position: absolute; transform: rotate(${-45-a%2*45}deg); top: ${200+a*60}px; left: ${a%2*20}px;`:r=`position: absolute; transform: rotate(${a%2*45}deg); left: ${a*50}px; bottom: ${a%2*15}px;`,i+=`<div style="${r}">${o}</div>`}return i}function u(){return`
+  `}window.handleCheckout=()=>{const t=document.getElementById("payment-info"),e=document.getElementById("checkout-button");if(window.cart.length===0){showNotification("Adicione presentes ao carrinho primeiro!");return}if(t.classList.contains("hidden")){t.classList.remove("hidden"),e.textContent="Finalizar";const o=window.cart.reduce((a,r)=>a+r.value,0),i=C(o);document.getElementById("pix-code-input").value=i,y(i)}else showNotification("Obrigado pelo seu presente! ❤️"),w(),window.cart=[],updateCartCounter(),updateCartDrawer(),t.classList.add("hidden"),e.textContent="Enviar Presente",setTimeout(()=>{closeCartDrawer()},1500)};window.copyCartPixCode=()=>{const t=document.getElementById("pix-code-input"),e=document.getElementById("pix-copy-status"),o=document.getElementById("copy-pix-button"),i=window.cart.reduce((r,s)=>r+s.value,0),a=C(i);t.value=a,y(a),navigator.clipboard.writeText(t.value).then(()=>{e.classList.remove("hidden"),o.textContent="Pix copiado!",w(),setTimeout(()=>{e.classList.add("hidden"),o.textContent="Copiar pix"},3e3)}).catch(r=>{console.error("Erro ao copiar texto: ",r),showNotification("Erro ao copiar o código Pix")})};function w(){if(typeof window.confetti>"u"){console.error("A biblioteca confetti não foi carregada");const t=document.createElement("script");t.src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js",t.onload=function(){console.log("Biblioteca confetti carregada com sucesso"),setTimeout(b,100)},document.head.appendChild(t);return}b()}function b(){const e=Date.now()+3e3,o={startVelocity:30,spread:360,ticks:60,zIndex:9999},i=["#FFC0CB","#FFD700","#FF69B4","#FFFFFF","#F08080"];function a(s,d){return Math.random()*(d-s)+s}window.confetti({particleCount:150,spread:70,origin:{y:.6,x:.5},colors:i,zIndex:9999});const r=setInterval(function(){const s=e-Date.now();if(s<=0)return clearInterval(r);const d=50*(s/3e3);window.confetti({...o,particleCount:d,origin:{x:a(.1,.3),y:Math.random()-.2},colors:i}),window.confetti({...o,particleCount:d,origin:{x:a(.7,.9),y:Math.random()-.2},colors:i})},250)}function y(t){const e=`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(t)}`,o=document.getElementById("qrcode-image");o&&(o.src=e,o.alt="QR Code Pix")}function C(t){let e=0;!isNaN(t)&&t>0&&(e=parseFloat(t.toFixed(2)));const o="anderson.rissardi94@gmail.com",i="Anderson Rissardi",a="SAO PAULO",r=e.toFixed(2),s=Math.random().toString(36).substring(2,12);let l=["00020126","51","0014BR.GOV.BCB.PIX","0129"+o,"5204","0000","5303986","54"+r.length.toString().padStart(2,"0")+r,"5802BR","59"+i.length.toString().padStart(2,"0")+i,"60"+a.length.toString().padStart(2,"0")+a,"62140510"+s,"6304"].join("");const n=_(l);return l+n.toString(16).toUpperCase().padStart(4,"0")}function _(t){let e=65535,o=4129,i=new TextEncoder().encode(t);for(let a of i){e^=a<<8;for(let r=0;r<8;r++)e=e&32768?e<<1^o:e<<1}return e&65535}function p(t,e){const o='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" class="fill-verde-musgo"><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>';let i="";for(let a=0;a<t;a++){let r="";e==="right"?r=`position: absolute; transform: rotate(${45+a%2*45}deg); top: ${a*60}px; right: ${a%2*20}px;`:e==="left"?r=`position: absolute; transform: rotate(${-45-a%2*45}deg); top: ${200+a*60}px; left: ${a%2*20}px;`:r=`position: absolute; transform: rotate(${a%2*45}deg); left: ${a*50}px; bottom: ${a%2*15}px;`,i+=`<div style="${r}">${o}</div>`}return i}function u(){return`
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <!-- Right side zigzag -->
       <div class="absolute right-4 top-16 opacity-20">
@@ -132,7 +132,7 @@
     <section id="hero-section" class="hero-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
-          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596034/IMG-20180123-WA0017_csattx.jpg')"></div>
+          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744468024/PR%C3%89_WEDDING-69_udb2wc.jpg')"></div>
           <div class="absolute bottom-12 left-12 text-primary">
             <h1 class="font-dancing text-5xl md:text-6xl lg:text-7xl mb-3  font-bold tracking-wide">Anderson & Bruna</h1>
             <p class="text-2xl italic">Nós mal podemos esperar para dividir nosso dia especial com você!</p>
@@ -152,7 +152,7 @@
         </div>
       </div>
     </section>
-  `}function I(){return`
+  `}function E(){return`
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -163,11 +163,11 @@
       <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
       <link href="./styles/output.css" rel="stylesheet">
     </head>
-  `}function q(){return`
+  `}function I(){return`
     <section id="agenda-section" class="agenda-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
-          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1742748168/IMG_20241016_201110_rlo2pt.jpg')"></div>
+          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467895/PR%C3%89_WEDDING-39_fgrg0o.jpg')"></div>
           <div class="absolute bottom-12 left-12 text-primary">
             <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3 font-bold tracking-wide">Programação</h1>
             <p class="text-xl italic">O que esperar do nosso grande dia</p>
@@ -215,11 +215,11 @@
         </div>
       </div>
     </section>
-  `}function E(){return`
+  `}function q(){return`
     <section id="curiosidades-section" class="curiosidades-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
-          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596036/IMG_0996_xznh8b.jpg')"></div>
+          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467893/PR%C3%89_WEDDING-27_uu4gmn.jpg')"></div>
           <div class="absolute bottom-12 left-12 text-primary">
             <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3  font-bold tracking-wide">Curiosidades</h1>
             <p class="text-xl  italic">Conheça mais sobre nossa história</p>
@@ -261,7 +261,7 @@
     <section id="album-section" class="album-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
-          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596036/IMG_20221028_200744_qtsyrx.jpg')"></div>
+          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467843/PR%C3%89_WEDDING-116_sxtpkc.jpg')"></div>
           <div class="absolute bottom-12 left-12 text-primary">
             <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3  font-bold tracking-wide">Álbum de Fotos</h1>
             <p class="text-xl  italic">Compartilhe seus momentos especiais conosco</p>
@@ -297,11 +297,11 @@
         </div>
       </div>
     </section>
-  `}function M(){return`
+  `}function D(){return`
     <section id="doacao-section" class="doacao-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
-          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596034/IMG-20180421-WA0064_qvsngo.jpg')"></div>
+          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467881/PR%C3%89_WEDDING-200_jb4fbk.jpg')"></div>
           <div class="absolute bottom-12 left-12 text-primary">
             <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3  font-bold tracking-wide">Doações</h1>
             <p class="text-xl  italic">Compartilhe amor com quem precisa</p>
@@ -338,7 +338,7 @@
         </div>
       </div>
     </section>
-  `}function L(){function t(){let d=window.innerHeight*.01;document.documentElement.style.setProperty("--vh",`${d}px`)}t(),window.addEventListener("resize",t);const e=document.querySelectorAll("section"),o=document.getElementById("hero-section"),i=document.getElementById("agenda-section"),a=document.getElementById("curiosidades-section"),r=document.getElementById("album-section"),s=document.getElementById("doacao-section");i&&(i.style.opacity="0.0"),a&&(a.style.opacity="0.2"),r&&(r.style.opacity="0.2"),s&&(s.style.opacity="0.2"),window.addEventListener("scroll",function(){const d=window.scrollY,c=window.innerHeight;if(o){const n=o.querySelector(".bg-cover");n.style.transform=`translateY(${d*.2}px)`;const l=o.querySelector(".absolute");l.style.opacity=1-d/800}[i,a,r,s].forEach((n,l)=>{if(n){const m=n.getBoundingClientRect().top,v=1-Math.max(0,Math.min(1,m/(c*.8)));n.style.opacity=Math.max(.2,v).toString();const S=Math.max(0,m*.05);n.style.transform=`translateY(${S}px)`}}),e.forEach(n=>{if(n.id!=="hero-section"&&n.id!=="agenda-section"&&n.id!=="curiosidades-section"&&n.id!=="album-section"&&n.id!=="doacao-section"){const l=n.getBoundingClientRect().top,m=n.offsetHeight;if(l<c-50){const v=1-Math.max(0,Math.min(1,l*-1/m));n.style.opacity=Math.min(1,v+.4),n.style.transform=`translateY(${Math.max(0,l*.05)}px)`}}})})}const F=window.location.pathname;let g="";const P=`
+  `}function P(){function t(){let d=window.innerHeight*.01;document.documentElement.style.setProperty("--vh",`${d}px`)}t(),window.addEventListener("resize",t);const e=document.querySelectorAll("section"),o=document.getElementById("hero-section"),i=document.getElementById("agenda-section"),a=document.getElementById("curiosidades-section"),r=document.getElementById("album-section"),s=document.getElementById("doacao-section");i&&(i.style.opacity="0.0"),a&&(a.style.opacity="0.2"),r&&(r.style.opacity="0.2"),s&&(s.style.opacity="0.2"),window.addEventListener("scroll",function(){const d=window.scrollY,l=window.innerHeight;if(o){const n=o.querySelector(".bg-cover");n.style.transform=`translateY(${d*.2}px)`;const c=o.querySelector(".absolute");c.style.opacity=1-d/800}[i,a,r,s].forEach((n,c)=>{if(n){const m=n.getBoundingClientRect().top,g=1-Math.max(0,Math.min(1,m/(l*.8)));n.style.opacity=Math.max(.2,g).toString();const S=Math.max(0,m*.05);n.style.transform=`translateY(${S}px)`}}),e.forEach(n=>{if(n.id!=="hero-section"&&n.id!=="agenda-section"&&n.id!=="curiosidades-section"&&n.id!=="album-section"&&n.id!=="doacao-section"){const c=n.getBoundingClientRect().top,m=n.offsetHeight;if(c<l-50){const g=1-Math.max(0,Math.min(1,c*-1/m));n.style.opacity=Math.min(1,g+.4),n.style.transform=`translateY(${Math.max(0,c*.05)}px)`}}})})}const M=window.location.pathname;let v="";const L=`
   <div class="relative w-full overflow-hidden h-24 mt-8">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20 w-full">
       <div class="flex justify-center">
@@ -346,19 +346,19 @@
       </div>
     </div>
   </div>
-`,A=F.includes("lista-presentes.html");A?g=`
+`,F=M.includes("lista-presentes.html");F?v=`
     ${h("Lista de Presentes","Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)")}  
     ${x()}
     ${f()}
-  `:g=`
-    ${I()}
-    ${B()}
-    ${q()}
+  `:v=`
     ${E()}
+    ${B()}
+    ${I()}
+    ${q()}
     ${z()}
-    ${M()}
-    ${P}      
+    ${D()}
+    ${L}      
     ${h("Lista de Presentes","Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)")}  
     ${x()}
     ${f()}
-  `;document.querySelector("#app").innerHTML=j(g);document.addEventListener("DOMContentLoaded",()=>{L(),window.updateCartCounter&&window.updateCartCounter()});
+  `;document.querySelector("#app").innerHTML=j(v);document.addEventListener("DOMContentLoaded",()=>{P(),window.updateCartCounter&&window.updateCartCounter()});
