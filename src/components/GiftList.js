@@ -64,7 +64,7 @@ export function createGiftList() {
 			imgSrc:
 				"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/uber_sfquxt.webp",
 			description: "Uber até o aeroporto",
-			value: 120,
+			value: 200,
 		},
 		{
 			imgSrc:
@@ -76,7 +76,7 @@ export function createGiftList() {
 			imgSrc:
 				"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/curso_tpm_fq3xmv.webp",
 			description: "Vídeo aula sobre TPM pro noivo não morrer",
-			value: 150,
+			value: 300,
 		},
 		{
 			imgSrc:
@@ -94,7 +94,7 @@ export function createGiftList() {
 			imgSrc:
 				"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908307/lavalouca_mfjfbt.jpg",
 			description: "Parcela da lava-louças pro noivo não sofrer",
-			value: 150,
+			value: 400,
 		},
 		{
 			imgSrc:
@@ -129,7 +129,7 @@ export function createGiftList() {
 		{
 			imgSrc:
 				"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908441/comprinhas_li5row.webp",
-			description: "Umas blusinhas que a noiva não tem nada pra vestir",
+			description: "Umas blusinhas porque a noiva não tem nada pra vestir",
 			value: 300,
 		},
 		{
@@ -142,7 +142,7 @@ export function createGiftList() {
 			imgSrc:
 				"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/roupa_noivo_nrxpjj.webp",
 			description: "Parcela da roupa do noivo",
-			value: 300,
+			value: 400,
 		},
 		{
 			imgSrc:
@@ -160,7 +160,7 @@ export function createGiftList() {
 			imgSrc:
 				"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/jantar_romantico_k9wkht.webp",
 			description: "Um jantar romântico na lua de mel",
-			value: 250,
+			value: 500,
 		},
 		{
 			imgSrc:
@@ -172,13 +172,13 @@ export function createGiftList() {
 			imgSrc:
 				"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908585/sogra_navw3d.jpg",
 			description: "Ajudar no quartinho da sogra",
-			value: 550,
+			value: 700,
 		},
 		{
 			imgSrc:
 				"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908673/buque_n1ofo1.jpg",
 			description: "Jogar o buque na sua direção",
-			value: 200,
+			value: 600,
 		},
 		{
 			imgSrc:
@@ -208,10 +208,8 @@ export function createGiftList() {
 			imgSrc:
 				"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909240/Cocobay-Resort-2_qapoly.jpg",
 			description: "Parcela do hotel da lua de mel",
-			value: 300,
-		},
-
-		// Adicione mais presentes conforme necessário
+			value: 1200,
+		},		
 	];
 
 	return `
