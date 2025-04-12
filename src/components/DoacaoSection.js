@@ -5,7 +5,7 @@ export function createDoacaoSection() {
     <section id="doacao-section" class="doacao-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
-          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596034/IMG-20180421-WA0064_qvsngo.jpg')"></div>
+          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467881/PR%C3%89_WEDDING-200_jb4fbk.jpg')"></div>
           <div class="absolute bottom-12 left-12 text-primary">
             <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3  font-bold tracking-wide">Doações</h1>
             <p class="text-xl  italic">Compartilhe amor com quem precisa</p>
@@ -44,3 +44,8 @@ export function createDoacaoSection() {
     </section>
   `;
 }
+
+// Old 
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596034/IMG-20180421-WA0064_qvsngo.jpg
+// Novo
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467881/PR%C3%89_WEDDING-200_jb4fbk.jpg

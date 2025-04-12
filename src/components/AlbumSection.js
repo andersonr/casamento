@@ -5,7 +5,7 @@ export function createAlbumSection() {
     <section id="album-section" class="album-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
-          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596036/IMG_20221028_200744_qtsyrx.jpg')"></div>
+          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467843/PR%C3%89_WEDDING-116_sxtpkc.jpg')"></div>
           <div class="absolute bottom-12 left-12 text-primary">
             <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3  font-bold tracking-wide">Álbum de Fotos</h1>
             <p class="text-xl  italic">Compartilhe seus momentos especiais conosco</p>
@@ -43,3 +43,11 @@ export function createAlbumSection() {
     </section>
   `;
 }
+
+
+// Old
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596036/IMG_20221028_200744_qtsyrx.jpg 
+// Nova
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467889/PR%C3%89_WEDDING-220_ecyyqp.jpg
+// ou
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467843/PR%C3%89_WEDDING-116_sxtpkc.jpg

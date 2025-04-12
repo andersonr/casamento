@@ -5,7 +5,7 @@ export function createCuriosidadesSection() {
     <section id="curiosidades-section" class="curiosidades-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
-          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596036/IMG_0996_xznh8b.jpg')"></div>
+          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467893/PR%C3%89_WEDDING-27_uu4gmn.jpg')"></div>
           <div class="absolute bottom-12 left-12 text-primary">
             <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3  font-bold tracking-wide">Curiosidades</h1>
             <p class="text-xl  italic">Conheça mais sobre nossa história</p>
@@ -45,3 +45,8 @@ export function createCuriosidadesSection() {
     </section>
   `;
 }
+
+// Old
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596036/IMG_0996_xznh8b.jpg
+// Nova
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467893/PR%C3%89_WEDDING-27_uu4gmn.jpg

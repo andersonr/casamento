@@ -5,7 +5,7 @@ export function createHero() {
     <section id="hero-section" class="hero-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
-          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596034/IMG-20180123-WA0017_csattx.jpg')"></div>
+          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744468024/PR%C3%89_WEDDING-69_udb2wc.jpg')"></div>
           <div class="absolute bottom-12 left-12 text-primary">
             <h1 class="font-dancing text-5xl md:text-6xl lg:text-7xl mb-3  font-bold tracking-wide">Anderson & Bruna</h1>
             <p class="text-2xl italic">Nós mal podemos esperar para dividir nosso dia especial com você!</p>
@@ -27,6 +27,14 @@ export function createHero() {
     </section>
   `;
 }
+
+//Old
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1733596034/IMG-20180123-WA0017_csattx.jpg
+
+//Nova 
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1744468024/PR%C3%89_WEDDING-69_udb2wc.jpg
+// ou
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467849/PR%C3%89_WEDDING-14_yygyl4.jpg
 
 /* Simbolos para separar a data
   ✢ ✣ ✤ ✥ ❋ ✦ ✧ ✩ ╰☆╮ ✪ ✫ ✬ ✭ ✮ ✯ ✰  ★ ✱ ✲   ❂ ✵ ✶ ✷ ✸ ✹ ✺ ✻ ✼  ❅ ❆  ❈ ❉ ❊

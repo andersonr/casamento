@@ -5,7 +5,7 @@ export function createAgendaSection() {
     <section id="agenda-section" class="agenda-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
-          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1742748168/IMG_20241016_201110_rlo2pt.jpg')"></div>
+          <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467895/PR%C3%89_WEDDING-39_fgrg0o.jpg')"></div>
           <div class="absolute bottom-12 left-12 text-primary">
             <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3 font-bold tracking-wide">Programação</h1>
             <p class="text-xl italic">O que esperar do nosso grande dia</p>
@@ -57,7 +57,10 @@ export function createAgendaSection() {
 }
 
 
-//<div class="agenda-item-static">
-//                 <div class="text-lg font-bold text-primary">Fotos e Coquetel</div>
-//                 <div class="text-base text-verde-musgo">Fotos com os convidados e drinks de boas-vindas</div>
-//               </div>
+//Old
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1742748168/IMG_20241016_201110_rlo2pt.jpg
+
+//Nova
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467895/PR%C3%89_WEDDING-39_fgrg0o.jpg
+// OU
+// https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467893/PR%C3%89_WEDDING-33_ltrgul.jpg
