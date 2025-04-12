@@ -1,7 +1,7 @@
 (function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))i(a);new MutationObserver(a=>{for(const r of a)if(r.type==="childList")for(const s of r.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&i(s)}).observe(document,{childList:!0,subtree:!0});function o(a){const r={};return a.integrity&&(r.integrity=a.integrity),a.referrerPolicy&&(r.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?r.credentials="include":a.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(a){if(a.ep)return;a.ep=!0;const r=o(a);fetch(a.href,r)}})();function k(t,e,o,i,a){return`
      <div class="bg-white shadow-md rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 border-2 border-rosa-claro flex flex-col h-full">
       <img src="${t}" alt="${e}" class="w-full h-48 object-cover">
-      <div class="p-4 flex flex-col flex-grow">
+      <div class="p-4 flex flex-col flex-grow font-raleway">
         <p class="text-gray-700 text-rosa-claro flex-grow">${e}</p>
         <div class="mt-auto">
           <p class="text-rosa-claro"><b>R$ ${o?o.toFixed(2).toString().replace(".",","):"1,00"}</b></p>
@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-  `}window.showImage=t=>{const e=document.getElementById(`image-container_${t}`);if(!e.querySelector("img")){const o=document.createElement("img");o.src="./images/150.svg",o.alt="Imagem de presente",o.className="object-cover mt-2",e.appendChild(o);const i=document.createElement("button");i.id=`btn_pix_${t}`,i.textContent="Copiar pix",i.className="bg-green-500 text-white py-2 px-4 rounded w-full",i.onclick=()=>$(t),e.appendChild(i)}};function $(t){const e=document.getElementById(`txt_${t}`).value;navigator.clipboard.writeText(e).then(()=>{document.getElementById(`btn_pix_${t}`).textContent="Pix copiado!"}).catch(o=>{console.error("Erro ao copiar texto: ",o)})}window.cart=[];window.addToCart=(t,e,o,i,a)=>{window.cart.findIndex(s=>s.index===i)===-1?(window.cart.push({imgSrc:t,description:e,value:o,index:i,pixCode:a}),showNotification(`${e} adicionado ao carrinho!`),updateCartCounter(),updateCartDrawer()):showNotification("Este presente já está no seu carrinho!"),openCartDrawer()};window.removeFromCart=t=>{const e=window.cart.findIndex(o=>o.index==t);if(e!==-1){const o=window.cart[e];window.cart.splice(e,1),showNotification(`${o.description} removido do carrinho!`),updateCartCounter(),updateCartDrawer()}};window.updateCartCounter=()=>{const t=document.getElementById("cart-counter");t&&(t.textContent=window.cart.length,t.style.display=window.cart.length>0?"flex":"none")};window.updateCartDrawer=()=>{const t=document.getElementById("cart-items");if(!t)return;if(window.cart.length===0){t.innerHTML='<p class="text-center text-gray-500 py-4">Seu carrinho está vazio</p>',document.getElementById("checkout-button").disabled=!0;return}let e=0,o="";window.cart.forEach(i=>{e+=i.value,o+=`
+  `}window.showImage=t=>{const e=document.getElementById(`image-container_${t}`);if(!e.querySelector("img")){const o=document.createElement("img");o.src="./images/150.svg",o.alt="Imagem de presente",o.className="object-cover mt-2",e.appendChild(o);const i=document.createElement("button");i.id=`btn_pix_${t}`,i.textContent="Copiar pix",i.className="bg-green-500 text-white py-2 px-4 rounded w-full",i.onclick=()=>j(t),e.appendChild(i)}};function j(t){const e=document.getElementById(`txt_${t}`).value;navigator.clipboard.writeText(e).then(()=>{document.getElementById(`btn_pix_${t}`).textContent="Pix copiado!"}).catch(o=>{console.error("Erro ao copiar texto: ",o)})}window.cart=[];window.addToCart=(t,e,o,i,a)=>{window.cart.findIndex(s=>s.index===i)===-1?(window.cart.push({imgSrc:t,description:e,value:o,index:i,pixCode:a}),showNotification(`${e} adicionado ao carrinho!`),updateCartCounter(),updateCartDrawer()):showNotification("Este presente já está no seu carrinho!"),openCartDrawer()};window.removeFromCart=t=>{const e=window.cart.findIndex(o=>o.index==t);if(e!==-1){const o=window.cart[e];window.cart.splice(e,1),showNotification(`${o.description} removido do carrinho!`),updateCartCounter(),updateCartDrawer()}};window.updateCartCounter=()=>{const t=document.getElementById("cart-counter");t&&(t.textContent=window.cart.length,t.style.display=window.cart.length>0?"flex":"none")};window.updateCartDrawer=()=>{const t=document.getElementById("cart-items");if(!t)return;if(window.cart.length===0){t.innerHTML='<p class="text-center text-gray-500 py-4">Seu carrinho está vazio</p>',document.getElementById("checkout-button").disabled=!0;return}let e=0,o="";window.cart.forEach(i=>{e+=i.value,o+=`
       <div class="flex items-center p-2 border-b border-gray-200">
         <img src="${i.imgSrc}" alt="${i.description}" class="w-16 h-16 object-cover rounded">
         <div class="ml-2 flex-grow">
@@ -29,22 +29,22 @@
     <div class="p-2 border-t border-gray-200 mt-2">
       <p class="text-right font-bold text-rosa-claro">Total: R$ ${e.toFixed(2).replace(".",",")}</p>
     </div>
-  `,t.innerHTML=o,document.getElementById("checkout-button").disabled=!1};window.openCartDrawer=()=>{const t=document.getElementById("cart-drawer"),e=document.getElementById("cart-overlay");t&&e&&(t.classList.remove("translate-x-full"),e.classList.remove("hidden"),document.body.classList.add("overflow-hidden"))};window.closeCartDrawer=()=>{const t=document.getElementById("cart-drawer"),e=document.getElementById("cart-overlay");t&&e&&(t.classList.add("translate-x-full"),e.classList.add("hidden"),document.body.classList.remove("overflow-hidden"))};window.checkout=()=>{if(window.cart.length===0){showNotification("Adicione presentes ao carrinho primeiro!");return}showNotification("Obrigado pelo seu presente! ❤️"),window.cart=[],updateCartCounter(),updateCartDrawer(),closeCartDrawer()};window.showNotification=t=>{let e=document.getElementById("notification");e||(e=document.createElement("div"),e.id="notification",e.className="fixed bottom-4 right-4 bg-primary text-white p-3 rounded-lg shadow-lg transform transition-transform duration-300 translate-y-20 z-50",document.body.appendChild(e)),e.textContent=t,e.classList.remove("translate-y-20"),setTimeout(()=>{e.classList.add("translate-y-20")},3e3)};function x(){return`
+  `,t.innerHTML=o,document.getElementById("checkout-button").disabled=!1};window.openCartDrawer=()=>{const t=document.getElementById("cart-drawer"),e=document.getElementById("cart-overlay");t&&e&&(t.classList.remove("translate-x-full"),e.classList.remove("hidden"),document.body.classList.add("overflow-hidden"))};window.closeCartDrawer=()=>{const t=document.getElementById("cart-drawer"),e=document.getElementById("cart-overlay");t&&e&&(t.classList.add("translate-x-full"),e.classList.add("hidden"),document.body.classList.remove("overflow-hidden"))};window.checkout=()=>{if(window.cart.length===0){showNotification("Adicione presentes ao carrinho primeiro!");return}showNotification("Obrigado pelo seu presente! ❤️"),window.cart=[],updateCartCounter(),updateCartDrawer(),closeCartDrawer()};window.showNotification=t=>{let e=document.getElementById("notification");e||(e=document.createElement("div"),e.id="notification",e.className="fixed bottom-4 right-4 bg-primary text-white p-3 rounded-lg shadow-lg transform transition-transform duration-300 translate-y-20 z-50",document.body.appendChild(e)),e.textContent=t,e.classList.remove("translate-y-20"),setTimeout(()=>{e.classList.add("translate-y-20")},3e3)};function h(){return`
 	
-    <main class="p-8 bg-amarelo-queimado text-primary">
+    <main class="p-8 bg-amarelo-queimado text-primary text-raleway">
       <div class="grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 1200px; margin: 0 auto;">
-        ${[{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/terapia_jabul0.webp",description:"Terapia para a noiva após os preparativos do casamento",value:150,pixSrc:"./images/150.svg",pixCode:"aaaado00020126510014BR.GOV.BCB.PIX0129anderson.rissardi94@gmail.com5204000053039865406150.005802BR5917Anderson Rissardi6009SAO PAULO610805409000622405207x6YVQBRBJ45U9Mmwdwh6304A556"},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/banda-branca-de-neve_opdxwh.webp",description:"Banda para o casamento",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/creatina_tspg0m.webp",description:"Creatina para o projeto verão",value:80},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/poli_nly7bk.webp",description:"Aulas de dança pro noivo, ele ta precisando",value:171},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/drinks-noivos_wfhz2p.webp",description:"Drinks para o casal na lua de mel",value:60},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/cerveja_jugpxi.webp",description:"Caixinha de cerveja para o noivo",value:40},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/pao_queijo_wtrbl4.webp",description:"Pão de queijo que o noivo adora",value:30},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/netflix_btkkom.webp",description:"1 mês de Netflix pro casal",value:50},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/alianca_zysoz8.webp",description:"Parcela das alianças",value:1e3},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/uber_sfquxt.webp",description:"Uber até o aeroporto",value:120},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907607/whey_rjmk1v.webp",description:"Wheyzinho do monstro",value:110},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/curso_tpm_fq3xmv.webp",description:"Vídeo aula sobre TPM pro noivo não morrer",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/vinho_jc3zv4.webp",description:"Vinhozinho pra noiva",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/aviaozinho_uyzoyr.webp",description:"Aviãozinho do Silvio Santos",value:50},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908307/lavalouca_mfjfbt.jpg",description:"Parcela da lava-louças pro noivo não sofrer",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/contas_afsd7j.webp",description:"Adote uma conta",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/rolex_yv6aqv.webp",description:"Rolex pro noivo",value:10},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/sandalia_wllxso.webp",description:"Um sapatinho pra noiva não machucar o pé",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/manicure_wlmk7b.webp",description:"Manicure pro grande dia",value:180},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/lingerie_nbs9iz.webp",description:"Lingerie sensual pra noiva",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908441/comprinhas_li5row.webp",description:"Umas blusinhas que a noiva não tem nada pra vestir",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908501/cueca-furada_k4bspi.jpg",description:"Umas cuecas pro noivo que anda tão necessitado",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/roupa_noivo_nrxpjj.webp",description:"Parcela da roupa do noivo",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/barbeiro_u2fdvd.webp",description:"Barbeiro do grande dia",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/lua_de_mel_ikoxgm.webp",description:"Parcela da viagem de lua de mel",value:1e3},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/jantar_romantico_k9wkht.webp",description:"Um jantar romântico na lua de mel",value:250},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908122/casino_vkk1bi.jpg",description:"Uma jogadinha no casino",value:120},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908585/sogra_navw3d.jpg",description:"Ajudar no quartinho da sogra",value:550},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908673/buque_n1ofo1.jpg",description:"Jogar o buque na sua direção",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908776/buffet_xydcmq.jpg",description:"Primeiro lugar na fila do buffet",value:500},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908848/tiktok-31_kx7xio.png",description:"Foto e dancinha pro tiktok com os noivos",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909056/fim_orcal1.jpg",description:"Eu não vou embora!! Ajuda na hora extra dos fornecedores",value:80},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909156/tutubarao_r5crnm.jpg",description:"Mergulho com tubarões - Apenas o noivo",value:250},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909240/Cocobay-Resort-2_qapoly.jpg",description:"Parcela do hotel da lua de mel",value:300}].map((e,o)=>k(e.imgSrc,e.description,e.value,o,e.pixCode)).join("")}
+        ${[{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/terapia_jabul0.webp",description:"Terapia para a noiva após os preparativos do casamento",value:150,pixSrc:"./images/150.svg",pixCode:"aaaado00020126510014BR.GOV.BCB.PIX0129anderson.rissardi94@gmail.com5204000053039865406150.005802BR5917Anderson Rissardi6009SAO PAULO610805409000622405207x6YVQBRBJ45U9Mmwdwh6304A556"},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/banda-branca-de-neve_opdxwh.webp",description:"Banda no casamento",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/creatina_tspg0m.webp",description:"Creatina para o projeto verão",value:80},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/poli_nly7bk.webp",description:"Aulas de dança pro noivo, ele ta precisando",value:171},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/drinks-noivos_wfhz2p.webp",description:"Drinks para o casal na lua de mel",value:60},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/cerveja_jugpxi.webp",description:"Caixinha de cerveja para o noivo",value:40},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/pao_queijo_wtrbl4.webp",description:"Pão de queijo que o noivo adora",value:30},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/netflix_btkkom.webp",description:"1 mês de Netflix pro casal",value:50},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/alianca_zysoz8.webp",description:"Parcela das alianças",value:1e3},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/uber_sfquxt.webp",description:"Uber até o aeroporto",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907607/whey_rjmk1v.webp",description:"Wheyzinho do monstro",value:110},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/curso_tpm_fq3xmv.webp",description:"Vídeo aula sobre TPM pro noivo não morrer",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/vinho_jc3zv4.webp",description:"Vinhozinho pra noiva",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907608/aviaozinho_uyzoyr.webp",description:"Aviãozinho do Silvio Santos",value:50},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908307/lavalouca_mfjfbt.jpg",description:"Parcela da lava-louças pro noivo não sofrer",value:400},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/contas_afsd7j.webp",description:"Adote uma conta",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/rolex_yv6aqv.webp",description:"Rolex pro noivo",value:10},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907606/sandalia_wllxso.webp",description:"Um sapatinho pra noiva não machucar o pé",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/manicure_wlmk7b.webp",description:"Manicure pro grande dia",value:180},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/lingerie_nbs9iz.webp",description:"Lingerie sensual pra noiva",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908441/comprinhas_li5row.webp",description:"Umas blusinhas porque a noiva não tem nada pra vestir",value:300},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908501/cueca-furada_k4bspi.jpg",description:"Umas cuecas pro noivo que anda tão necessitado",value:200},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/roupa_noivo_nrxpjj.webp",description:"Parcela da roupa do noivo",value:400},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907609/barbeiro_u2fdvd.webp",description:"Barbeiro do grande dia",value:100},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907604/lua_de_mel_ikoxgm.webp",description:"Parcela da viagem de lua de mel",value:1e3},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737907605/jantar_romantico_k9wkht.webp",description:"Um jantar romântico na lua de mel",value:500},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908122/casino_vkk1bi.jpg",description:"Uma jogadinha no casino",value:120},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908585/sogra_navw3d.jpg",description:"Ajudar no quartinho da sogra",value:700},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908673/buque_n1ofo1.jpg",description:"Jogar o buque na sua direção",value:600},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908776/buffet_xydcmq.jpg",description:"Primeiro lugar na fila do buffet",value:500},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737908848/tiktok-31_kx7xio.png",description:"Foto e dancinha pro tiktok com os noivos",value:150},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909056/fim_orcal1.jpg",description:"Eu não vou embora!! Ajuda na hora extra dos fornecedores",value:80},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909156/tutubarao_r5crnm.jpg",description:"Mergulho com tubarões - Apenas o noivo",value:250},{imgSrc:"https://res.cloudinary.com/dabhe8ggx/image/upload/v1737909240/Cocobay-Resort-2_qapoly.jpg",description:"Parcela do hotel da lua de mel",value:1200}].map((e,o)=>k(e.imgSrc,e.description,e.value,o,e.pixCode)).join("")}
       </div>
     </main>
-  `}function h(t,e){return`
+  `}function x(t,e){return`
     <header class="relative flex items-center justify-center h-64 text-primary text-center">
       
       <div>
-        <h1 class="text-4xl font-dancing font-bold">${t}</h1>
-        <p class="mt-4 max-w-xl mx-auto">${e}</p>
+        <h1 class="text-4xl font-delius font-bold">${t}</h1>
+        <p class="mt-4 max-w-xl font-raleway mx-auto">${e}</p>
       </div>
     </header>
-  `}function j(t){return`
+  `}function $(t){return`
     <div class="relative min-h-screen">
       <div class="fixed left-0 top-0 w-64 h-full pointer-events-none bg-contain bg-left bg-no-repeat left-branch"></div>
       <div class="fixed right-0 top-0 w-64 h-full pointer-events-none bg-contain bg-right bg-no-repeat right-branch"></div>
@@ -133,19 +133,19 @@
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
           <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744468024/PR%C3%89_WEDDING-69_udb2wc.jpg')"></div>
-          <div class="absolute bottom-12 left-12 text-primary">
-            <h1 class="font-dancing text-5xl md:text-6xl lg:text-7xl mb-3  font-bold tracking-wide">Anderson & Bruna</h1>
-            <p class="text-2xl italic">Nós mal podemos esperar para dividir nosso dia especial com você!</p>
-          </div>
+          
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
           ${u()}
           <div class="text-center relative z-10">
-            <div class="text-2xl font-dancing mb-5 text-primary tracking-wider">14 ● Junho ● 2025</div>
+            <h3 class="font-delius text-primary text-4xl md:text-5xl lg:text-6xl mb-3 font-bold tracking-wide">Bruna </br> &  </br>Anderson</h3>
+            <p class="text-l font-raleway text-primary mb-5 italic">Estamos contando os segundos para viver esse dia mágico com você!</p>
             <div class="w-16 h-px bg-verde-musgo mx-auto mb-5"></div>
-            <div class="text-xl text-primary font-medium">
+            <div class="text-2xl font-delius mb-4 text-primary tracking-wider">14 ● Junho ● 2025</div>
+            <div class="w-16 h-px bg-verde-musgo mx-auto mb-5"></div>
+            <div class="text-xl font-raleway text-primary">
               Cerimônia e celebração do nosso casamento<br>
-              <span class="font-dancing text-2xl mt-2 block">Locomotiva eventos - Gaspar</span>
+              <span class="font-raleway text-l mt-2 block">Locomotiva Eventos</span>
               <a href="https://www.google.com/maps/place/Locomotiva+Eventos/@-26.8898304,-49.0027926,17z/data=!3m1!4b1!4m6!3m5!1s0x94df23a9fced8b2f:0x746e1b6bd669c6c4!8m2!3d-26.8898304!4d-49.0027926!16s%2Fg%2F11b6hs9xwm?entry=ttu&g_ep=EgoyMDI1MDMxOS4yIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" target="_blank" class="text-sm mt-2 block hover:underline text-primary">R. Vidal Flávio Dias, 1122 - Belchior Baixo, Gaspar - SC, 89114-442</a>
             </div>
           </div>
@@ -168,47 +168,46 @@
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
           <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467895/PR%C3%89_WEDDING-39_fgrg0o.jpg')"></div>
-          <div class="absolute bottom-12 left-12 text-primary">
-            <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3 font-bold tracking-wide">Programação</h1>
-            <p class="text-xl italic">O que esperar do nosso grande dia</p>
-          </div>
+          
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
           ${u()}
-          <div class="text-center relative z-10">
-            <h2 class="text-2xl font-dancing font-bold mb-5 text-primary tracking-wider">Nossa Celebração</h2>
-            <div class="w-12 h-px bg-verde-musgo mx-auto mb-6"></div>
+          <div class="text-center font-raleway relative z-10">
+            <h2 class="text-2xl font-delius font-bold mb-3 text-primary tracking-wider">Programação</h2>
+            <p class="text-l font-raleway mb-3 italic">O que esperar do nosso grande dia</p>
+            <div class="w-12 h-px bg-verde-musgo mx-auto mb-3"></div>
             <div class="space-y-5 max-h-[60vh] overflow-y-auto pr-2">
               <div class="agenda-item-static">
-                <div class="text-lg font-bold text-primary">Cerimônia às 15:30 hrs</div>
-                <div class="text-base text-verde-musgo">Celebração num lindo gramado a céu aberto</div>
-              </div>
-              
-               
-              
+                <div class="text-lg font-bold text-primary">Cerimônia às 15h30</div>
+                <div class="text-base text-verde-musgo">Vai ser ao ar livre, com direito a gramado, céu azul (se São Pedro colaborar) e muita emoção!</div>
+              </div>             
+                             
               <div class="agenda-item-static">
                 <div class="text-lg font-bold text-primary">Jantar</div>
-                <div class="text-base text-verde-musgo">Que tal uma bela costela fogo de chão 😋🍖</div>
+                <div class="text-base text-verde-musgo">Vai ter uma costela fogo de chão de encher os olhos e o prato 😋🍖</div>
               </div>
               
               <div class="agenda-item-static">
                 <div class="text-lg font-bold text-primary">Brincadeiras dos Noivos</div>
-                <div class="text-base text-verde-musgo">Jogar o buquê e corte da gravata</div>
+                <div class="text-base text-verde-musgo">Vai rolar a clássica jagada do buquê e o corte da gravata - então, separe umas moedinhas e venha entrar na brincadeira</div>
               </div>
               
               <div class="agenda-item-static">
                 <div class="text-lg font-bold text-primary">Festa com a Banda Society</div>
-                <div class="text-base text-verde-musgo">Primeira dança com coreografia dos noivos e tudo 💃🕺</div>
+                <div class="text-base text-verde-musgo">
+                  Se prepara que tem primeira dança com coreografia e tudo!! 💃🕺 <br/>
+                  Spoiler: a gente ensaiou direitinho (ou quase isso...)
+                </div>
               </div>
               
               <div class="agenda-item-static">
-                <div class="text-lg font-bold text-primary">Hora dos Doces</div>
-                <div class="text-base text-verde-musgo">Aproveitem o bolo e os docinhos maravilhosos</div>
+                <div class="text-lg font-bold text-primary">Hora dos doces</div>
+                <div class="text-base text-verde-musgo">Sim, tem bolo 🍰 Sim, tem docinhos 🍬 e sim, você vai querer repetir!<br/> E tá tudo bem!!</div>
               </div>
 
               <div class="agenda-item-static">
                 <div class="text-lg font-bold text-primary">Fim de festa</div>
-                <div class="text-base text-verde-musgo">Aproveitem muito pois teremos transfer à partir das 23h que levará da festa até o centra da cidade(TipTim)</div>
+                <div class="text-base text-verde-musgo">Vai até altas horas! Mas sem stress: a partir das 23h, vai ter transfer levando todo mundo com segurança até o centro (TipTim). Aproveita sem moderação!</div>
               </div>
             </div>
           </div>
@@ -220,36 +219,32 @@
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
           <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467893/PR%C3%89_WEDDING-27_uu4gmn.jpg')"></div>
-          <div class="absolute bottom-12 left-12 text-primary">
-            <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3  font-bold tracking-wide">Curiosidades</h1>
-            <p class="text-xl  italic">Conheça mais sobre nossa história</p>
-          </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
           ${u()}
-          <div class="text-center relative z-10">
-            <h2 class="text-2xl font-bold mb-5 text-primary font-dancing tracking-wider">Nossa História</h2>
+          <div class="text-center font-raleway relative z-10">
+            <h2 class="text-2xl font-delius font-bold mb-5 text-primary tracking-wider">Nossa História</h2>
             <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
 
             <div class="space-y-6">
               <div class="curiosidade-item">
-                <div class="text-xl font-bold text-primary">Quem deu o primeiro passo?</div>
-                <div class="text-lg text-verde-musgo">O Anderson, que fingiu precisar de "mais sessões" de fisioterapia só para ver a recepcionista de sorriso encantador mais vezes!</div>
+                <div class="text-lg font-bold text-primary">Quem deu o primeiro passo?</div>
+                <div class="text-base text-verde-musgo">O Anderson, que fingiu precisar de "mais sessões" de fisioterapia só para ver a recepcionista de sorriso encantador. <br/> Estratégia digna de comédia romântica 🤣</div>
               </div>
               
               <div class="curiosidade-item">
-                <div class="text-xl font-bold text-primary">Quem é o mais bagunceiro?</div>
-                <div class="text-lg text-verde-musgo">O Anderson jura que é a Bruna, a Bruna tem certeza que é o Anderson, a Mel🐕 e o Flokinho🐶, por mais que tentem, não conseguem superar os dois!</div>
+                <div class="text-lg font-bold text-primary">Quem é o mais bagunceiro?</div>
+                <div class="text-base text-verde-musgo">O Anderson jura que é a Bruna, a Bruna tem certeza que é o Anderson. Enquanto isso, a Mel🐕 e o Floquinho🐶 observam tudo e pensam: "a gente tenta acompanhar, mas é difícil competir com esses dois!"</div>
               </div>              
               
               <div class="curiosidade-item">
-                <div class="text-xl font-bold text-primary">Quem cozinha melhor?</div>
-                <div class="text-lg text-verde-musgo">A Bruna é a chef oficial, mas o Anderson é o mestre churrasqueiro e especialista em pedir delivery nos momentos mais necessários!</div>
+                <div class="text-lg font-bold text-primary">Quem cozinha melhor?</div>
+                <div class="text-base text-verde-musgo">A Bruna é a chef da casa - cozinha com amor e talento.<br/>O Anderson? Ele domina a arte do churrasco e é mestre em pedidos estratégicos no ifood (o verdadeiro salvador nos momentos de fome súbita)</div>
               </div>
 
               <div class="curiosidade-item">
-                <div class="text-xl font-bold text-primary">Qual a viagem mais marcantes que fizeram?</div>
-                <div class="text-lg text-verde-musgo">O Anderson acha que é Maragogi e suas lindas praias e a Bruna prefere a arquitetura, os parques e o doce de leite de Buenos Aires!</div>
+                <div class="text-lg font-bold text-primary">Qual a viagem mais marcante que fizeram?</div>
+                <div class="text-base text-verde-musgo">O Anderson acha que é Maragogi e suas lindas praias e pra Bruna, nada supera a arquitetura charmosa, os parques e, claro, o doce de leite de Buenos Aires. (E sim, já estamos aceitando sugestões pro próximo destino!)</div>
               </div>              
               
             </div>
@@ -262,30 +257,30 @@
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
           <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467843/PR%C3%89_WEDDING-116_sxtpkc.jpg')"></div>
-          <div class="absolute bottom-12 left-12 text-primary">
-            <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3  font-bold tracking-wide">Álbum de Fotos</h1>
-            <p class="text-xl  italic">Compartilhe seus momentos especiais conosco</p>
-          </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
           ${u()}
-          <div class="text-center relative z-10">
-            <h2 class="text-2xl font-bold mb-5 text-primary font-dancing tracking-wider">WedShoots</h2>
+          <div class="text-center font-raleway relative z-10">
+            <h2 class="text-2xl font-delius font-bold mb-5 text-primary tracking-wider">WedShoots</h2>
             <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
             <div class="space-y-6">
               <div class="album-item">
                 <div class="text-xl font-bold text-primary">Como funciona?</div>
                 
-                <div class="text-lg text-verde-musgo">É um app que permite que todos os convidados compartilhem suas fotos do nosso casamento em um único lugar.</div>
+                <div class="text-lg text-verde-musgo">
+                  Queremos ver o nosso dia pelos olhos de vocês!<br/>
+                  Com o app WedShoots, todos os convidados podem compartilhar fotos do casamento num único lugar. Assim, a gente guarda não só memórias, mas também aqueles cliques espontâneos e maravilhoso que só vocês conseguem registrar!
+                </div>
               </div>
               
               <div class="album-item">
                 <div class="text-xl font-bold text-primary">Como baixar</div>
-                <div class="text-lg text-verde-musgo">Gratuitamente na App Store e Google Play e procurar por "WedShoots" ou <a href="https://play.google.com/store/search?q=wedshoots&c=apps&hl=pt_BR" target="_blank" class="text-primary hover:text-rosa-forte underline">clique aqui</a></div>
+                <div class="text-lg text-verde-musgo">É grátis! <br/> 
+                É só procurar por "WedShoots" na App Store e Google Play ou <a href="https://play.google.com/store/search?q=wedshoots&c=apps&hl=pt_BR" target="_blank" class="text-primary hover:text-rosa-forte underline">clicar aqui</a></div>
               </div>
               
               <div class="album-item">
-                <div class="text-xl font-bold text-primary">Código do evento</div>
+                <div class="text-xl font-bold text-primary">Código do nosso casamento</div>
                 <div class="text-lg text-verde-musgo font-bold">BR00c7ea6b</div>
                 <div class="flex justify-center mt-4">
                     <img src="https://res.cloudinary.com/dabhe8ggx/image/upload/v1742758137/qrcode_wedshoots_ekxeca.png" alt="QR Code WedShoots" class="w-32 h-32">
@@ -297,40 +292,40 @@
         </div>
       </div>
     </section>
-  `}function D(){return`
+  `}function P(){return`
     <section id="doacao-section" class="doacao-section w-full h-screen">
       <div class="flex flex-col md:flex-row w-full h-full">
         <div class="relative w-full md:w-[65%] h-full">
           <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dabhe8ggx/image/upload/v1744467881/PR%C3%89_WEDDING-200_jb4fbk.jpg')"></div>
-          <div class="absolute bottom-12 left-12 text-primary">
-            <h1 class="font-dancing text-4xl md:text-5xl lg:text-6xl mb-3  font-bold tracking-wide">Doações</h1>
-            <p class="text-xl  italic">Compartilhe amor com quem precisa</p>
-          </div>
         </div>
         <div class="w-full md:w-[35%] flex items-center justify-center p-8 h-full relative" style="background-color: rgba(252, 207, 152, 0.7);">
           ${u()}
-          <div class="text-center relative z-10">
-            <h2 class="text-2xl font-bold mb-5 text-primary tracking-wider">Caridade</h2>
-            <p class="text-lg text-verde-musgo mb-6">Estamos envolvidos com a causa animal, quem sabe nesse momento, você considere fazer uma doação para uma destas instituições:</p>
+          <div class="text-center font-raleway relative z-10">
+            <h2 class="text-2xl font-delius font-bold mb-5 text-primary tracking-wider">Doações</h2>
+            <p class="text-lg text-verde-musgo mb-6">
+              Acreditamos que o amor se multiplica e pode ir muito além da nossa festa!
+              <br/>
+              Que tal aproveitar esse momento e fazer uma doação para uma causa que toca nosso coração?
+            </p>
             <div class="space-y-8">
               <div class="doacao-item">
-                <div class="text-xl font-bold text-primary">Sitio Dona Lúcia</div>
+                <div class="text-xl font-bold text-primary">Abrigo anjos de 4 patas</div>
                 <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
-                <div class="text-lg text-verde-musgo">Ajude animais abandonados a encontrarem um novo lar</div>
-                <a href="https://www.sitiodonalucia.com.br/" target="_blank" class="inline-block mt-2 text-primary hover:underline">Saiba mais</a>
+                <div class="text-lg text-verde-musgo">Ajude animais abandonados a encontrarem carinho, cuidado e um novo lar</div>
+                <a href="https://www.instagram.com/anjosde4paatas?igsh=bWFyODU5eWhjc2Yx" target="_blank" class="inline-block mt-2 text-primary hover:underline">Saiba mais</a>
               </div>
               
               <div class="doacao-item">
-                <div class="text-xl font-bold text-primary">Casa da Esperança</div>
+                <div class="text-xl font-bold text-primary">Edma e seus cachorros</div>
                 <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
-                <div class="text-lg text-verde-musgo">Apoio a crianças em situação de vulnerabilidade</div>
-                <a href="https://www.casadaesperanca.org" target="_blank" class="inline-block mt-2 text-primary hover:underline">Saiba mais</a>
+                <div class="text-lg text-verde-musgo">Ajude animais abandonados a encontrarem carinho, cuidado e um novo lar</div>
+                <a href="https://www.instagram.com/edma_eseuscachorros?igsh=c2Iya2lkeG5udWh0" target="_blank" class="inline-block mt-2 text-primary hover:underline">Saiba mais</a>
               </div>
               
               <div class="doacao-item">
-                <div class="text-xl font-bold text-primary">Casa de repouso menino jesus</div>
+                <div class="text-xl font-bold text-primary">Casa de repouso menino Jesus</div>
                 <div class="w-12 h-px bg-verde-musgo mx-auto my-2"></div>
-                <div class="text-lg text-verde-musgo">Cuidados e companhia para idosos sem família</div>
+                <div class="text-lg text-verde-musgo">Cuidados, companhia e dignidade para idosos que não têm mais família por perto</div>
                 <a href="https://www.instagram.com/crmeninojesus/" target="_blank" class="inline-block mt-2 text-primary hover:underline">Saiba mais</a>
               </div>
             </div>
@@ -338,7 +333,7 @@
         </div>
       </div>
     </section>
-  `}function P(){function t(){let d=window.innerHeight*.01;document.documentElement.style.setProperty("--vh",`${d}px`)}t(),window.addEventListener("resize",t);const e=document.querySelectorAll("section"),o=document.getElementById("hero-section"),i=document.getElementById("agenda-section"),a=document.getElementById("curiosidades-section"),r=document.getElementById("album-section"),s=document.getElementById("doacao-section");i&&(i.style.opacity="0.0"),a&&(a.style.opacity="0.2"),r&&(r.style.opacity="0.2"),s&&(s.style.opacity="0.2"),window.addEventListener("scroll",function(){const d=window.scrollY,l=window.innerHeight;if(o){const n=o.querySelector(".bg-cover");n.style.transform=`translateY(${d*.2}px)`;const c=o.querySelector(".absolute");c.style.opacity=1-d/800}[i,a,r,s].forEach((n,c)=>{if(n){const m=n.getBoundingClientRect().top,g=1-Math.max(0,Math.min(1,m/(l*.8)));n.style.opacity=Math.max(.2,g).toString();const S=Math.max(0,m*.05);n.style.transform=`translateY(${S}px)`}}),e.forEach(n=>{if(n.id!=="hero-section"&&n.id!=="agenda-section"&&n.id!=="curiosidades-section"&&n.id!=="album-section"&&n.id!=="doacao-section"){const c=n.getBoundingClientRect().top,m=n.offsetHeight;if(c<l-50){const g=1-Math.max(0,Math.min(1,c*-1/m));n.style.opacity=Math.min(1,g+.4),n.style.transform=`translateY(${Math.max(0,c*.05)}px)`}}})})}const M=window.location.pathname;let v="";const L=`
+  `}function D(){function t(){let d=window.innerHeight*.01;document.documentElement.style.setProperty("--vh",`${d}px`)}t(),window.addEventListener("resize",t);const e=document.querySelectorAll("section"),o=document.getElementById("hero-section"),i=document.getElementById("agenda-section"),a=document.getElementById("curiosidades-section"),r=document.getElementById("album-section"),s=document.getElementById("doacao-section");i&&(i.style.opacity="0.0"),a&&(a.style.opacity="0.2"),r&&(r.style.opacity="0.2"),s&&(s.style.opacity="0.2"),window.addEventListener("scroll",function(){const d=window.scrollY,l=window.innerHeight;if(o){const n=o.querySelector(".bg-cover");n.style.transform=`translateY(${d*.2}px)`;const c=o.querySelector(".absolute");c.style.opacity=1-d/800}[i,a,r,s].forEach((n,c)=>{if(n){const m=n.getBoundingClientRect().top,g=1-Math.max(0,Math.min(1,m/(l*.8)));n.style.opacity=Math.max(.2,g).toString();const S=Math.max(0,m*.05);n.style.transform=`translateY(${S}px)`}}),e.forEach(n=>{if(n.id!=="hero-section"&&n.id!=="agenda-section"&&n.id!=="curiosidades-section"&&n.id!=="album-section"&&n.id!=="doacao-section"){const c=n.getBoundingClientRect().top,m=n.offsetHeight;if(c<l-50){const g=1-Math.max(0,Math.min(1,c*-1/m));n.style.opacity=Math.min(1,g+.4),n.style.transform=`translateY(${Math.max(0,c*.05)}px)`}}})})}const M=window.location.pathname;let v="";const F=`
   <div class="relative w-full overflow-hidden h-24 mt-8">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20 w-full">
       <div class="flex justify-center">
@@ -346,9 +341,9 @@
       </div>
     </div>
   </div>
-`,F=M.includes("lista-presentes.html");F?v=`
-    ${h("Lista de Presentes","Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)")}  
-    ${x()}
+`,L=M.includes("lista-presentes.html");L?v=`
+    ${x("Lista de Presentes","Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)")}  
+    ${h()}
     ${f()}
   `:v=`
     ${E()}
@@ -356,9 +351,9 @@
     ${I()}
     ${q()}
     ${z()}
-    ${D()}
-    ${L}      
-    ${h("Lista de Presentes","Graças a deus, já conseguimos mobiliar a nossa casinha, mas se você quiser nos presentear, aceitamos presentes em dinheiro para a nossa lua de mel e para ajudar a pagar nossa casa :)")}  
-    ${x()}
+    ${P()}
+    ${F}      
+    ${x("Lista de Presentes","Se você quiser nos presentear, ficaremos super felizes! Aceitamos contribuições para nossa lua de mel dos sonhos e também para ajudar a tornar nosso lar ainda mais especial. 🏡")}  
+    ${h()}
     ${f()}
-  `;document.querySelector("#app").innerHTML=j(v);document.addEventListener("DOMContentLoaded",()=>{P(),window.updateCartCounter&&window.updateCartCounter()});
+  `;document.querySelector("#app").innerHTML=$(v);document.addEventListener("DOMContentLoaded",()=>{D(),window.updateCartCounter&&window.updateCartCounter()});
